@@ -54,6 +54,7 @@
     <Compile Include="Interfaces\IPageRepository.cs" />
     <Compile Include="Interfaces\IRoleRepository.cs" />
     <Compile Include="Interfaces\ISessionRepository.cs" />
+    <Compile Include="Interfaces\ISiteAdminRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Objects\Forms\Form.cs" />
     <Compile Include="Objects\Forms\FormItem.cs" />
