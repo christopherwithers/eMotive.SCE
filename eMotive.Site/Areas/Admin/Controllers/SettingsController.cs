@@ -45,6 +45,11 @@ namespace eMotive.SCE.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult Page()
+        {
+            return View();
+        }
+
         [Common.ActionFilters.Authorize(Roles = "Super Admin, Admin")]
         public ActionResult Search()
         {

@@ -119,9 +119,9 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHunspell">
       <HintPath>..\packages\NHunspell.1.2.5359.26126\lib\net\NHunspell.dll</HintPath>
@@ -265,6 +265,8 @@
     <Compile Include="Common\ActionFilters\AuthorizeAttribute.cs" />
     <Compile Include="Common\ActionFilters\CriticalErrorAttribute.cs" />
     <Compile Include="Common\ActionFilters\LogErrorsAttribute.cs" />
+    <Compile Include="Common\ApplicationFilters\ApplicationAttribute.cs" />
+    <Compile Include="Common\ApplicationFilters\ApplicationPageAttribute.cs" />
     <Compile Include="Common\ControllerFunctions.cs" />
     <Compile Include="Common\CustomJsonResult.cs" />
     <Compile Include="Common\Helpers\HtmlHelpers.cs" />
@@ -1176,6 +1178,7 @@
     <Content Include="Fileman\js\fileman-modified.zip" />
     <Content Include="Areas\Admin\Views\Users\SessionAttendanceCertificateTrainingLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Users\SessionAttendanceCertificateFeedbackLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\Page.cshtml" />
     <None Include="Properties\PublishProfiles\SceTest.pubxml" />
     <Content Include="Scripts\Contensis\corefunctionsRevised.js" />
     <Content Include="Scripts\Contensis\navigation.js" />
