@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4747A062-0720-4EA7-98CB-1B12EB4512FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eMotive.Models</RootNamespace>
+    <AssemblyName>eMotive.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\packages\ServiceStack.3.9.71\lib\net35\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\packages\ServiceStack.Common.3.9.11\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.FluentValidation.Mvc3">
+      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\ServiceStack.FluentValidation.Mvc3.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Common.3.9.11\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.3.9.14\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.3.9.14\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\packages\ServiceStack.Redis.3.9.11\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\packages\ServiceStack.3.9.71\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.0.30.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Objects\Account\ChangePassword.cs" />
+    <Compile Include="Objects\Account\Login.cs" />
+    <Compile Include="Objects\Account\AccountReminder.cs" />
+    <Compile Include="Objects\Account\SCEFormData.cs" />
+    <Compile Include="Objects\Account\Withdraw.cs" />
+    <Compile Include="Objects\Certificates\SCECertificate.cs" />
+    <Compile Include="Objects\Email\EmailSearch.cs" />
+    <Compile Include="Objects\Enums.cs" />
+    <Compile Include="Objects\FineUploader\FineUpload.cs" />
+    <Compile Include="Objects\Forms\Form.cs" />
+    <Compile Include="Objects\Forms\FormItem.cs" />
+    <Compile Include="Objects\Forms\FormList.cs" />
+    <Compile Include="Objects\Forms\FormListItem.cs" />
+    <Compile Include="Objects\Forms\FormType.cs" />
+    <Compile Include="Objects\Menu\Menu.cs" />
+    <Compile Include="Objects\News\NewsSearch.cs" />
+    <Compile Include="Objects\News\NewsItem.cs" />
+    <Compile Include="Objects\Pages\PartialPageSearch.cs" />
+    <Compile Include="Objects\Pages\Page.cs" />
+    <Compile Include="Objects\Pages\PageSearch.cs" />
+    <Compile Include="Objects\Pages\PartialPage.cs" />
+    <Compile Include="Objects\Reports\Users\InterviewerReportItem.cs" />
+    <Compile Include="Objects\Reports\Users\SCEReportItem.cs" />
+    <Compile Include="Objects\Reports\Users\WillingToChangeSignup.cs" />
+    <Compile Include="Objects\Roles\Role.cs" />
+    <Compile Include="Objects\Search\BasicSearch.cs" />
+    <Compile Include="Objects\Search\Paging.cs" />
+    <Compile Include="Objects\Search\SearchStatistics.cs" />
+    <Compile Include="Objects\SignupsMod\Group.cs" />
+    <Compile Include="Objects\SignupsMod\SessionAttendance.cs" />
+    <Compile Include="Objects\SignupsMod\Signup.cs" />
+    <Compile Include="Objects\SignupsMod\Slot.cs" />
+    <Compile Include="Objects\SignupsMod\SignupSearch.cs" />
+    <Compile Include="Objects\SignupsMod\UserSignup.cs" />
+    <Compile Include="Objects\SignupsMod\UserSignupProjection.cs" />
+    <Compile Include="Objects\SignupsMod\UserSignupView.cs" />
+    <Compile Include="Objects\SignupsMod\UserSlotView.cs" />
+    <Compile Include="Objects\Signups\AdminSignupView.cs" />
+    <Compile Include="Objects\Signups\Group.cs" />
+    <Compile Include="Objects\Signups\Location.cs" />
+    <Compile Include="Objects\Signups\SCETrainingInformation.cs" />
+    <Compile Include="Objects\Signups\SessionAttendance.cs" />
+    <Compile Include="Objects\Signups\SessionDay.cs" />
+    <Compile Include="Objects\Signups\ThirdPartySignupSessions.cs" />
+    <Compile Include="Objects\Signups\ThirdPartySignupSlots.cs" />
+    <Compile Include="Objects\Signups\WillingToChangeSignup.cs" />
+    <Compile Include="Objects\Uploads\UploadedDocument.cs" />
+    <Compile Include="Objects\Uploads\UploadLocation.cs" />
+    <Compile Include="Objects\Users\ApplicantData.cs" />
+    <Compile Include="Objects\Users\ApplicantUploadData.cs" />
+    <Compile Include="Objects\Users\ApplicantUploadView.cs" />
+    <Compile Include="Objects\Users\Profile.cs" />
+    <Compile Include="Objects\Signups\Signup.cs" />
+    <Compile Include="Objects\Signups\SignupSlotState.cs" />
+    <Compile Include="Objects\Signups\SignupState.cs" />
+    <Compile Include="Objects\Signups\Slot.cs" />
+    <Compile Include="Objects\Signups\SlotState.cs" />
+    <Compile Include="Objects\Signups\UserHomeView.cs" />
+    <Compile Include="Objects\Signups\UserSignup.cs" />
+    <Compile Include="Objects\Signups\UserSignupView.cs" />
+    <Compile Include="Objects\Signups\UserSlotView.cs" />
+    <Compile Include="Objects\StatusPages\ErrorView.cs" />
+    <Compile Include="Objects\StatusPages\SuccessView.cs" />
+    <Compile Include="Objects\Users\SCEData.cs" />
+    <Compile Include="Objects\Users\UserSearch.cs" />
+    <Compile Include="Objects\Users\User.cs" />
+    <Compile Include="Objects\Users\UserWithRoles.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Objects\Email\Email.cs" />
+    <Compile Include="Validation\Account\AccountReminderValidator.cs" />
+    <Compile Include="Validation\Account\ChangePasswordValidator.cs" />
+    <Compile Include="Validation\Account\WithdrawValidator.cs" />
+    <Compile Include="Validation\Account\LoginValidator.cs" />
+    <Compile Include="Validation\Email\EmailValidator.cs" />
+    <Compile Include="Validation\News\NewsValidator.cs" />
+    <Compile Include="Validation\Page\PartialPageValidator.cs" />
+    <Compile Include="Validation\Page\PageValidator.cs" />
+    <Compile Include="Validation\Role\RoleValidator.cs" />
+    <Compile Include="Validation\Sessions\UserValidator.cs" />
+    <Compile Include="Validation\User\SCEDataValidator .cs" />
+    <Compile Include="Validation\User\UserValidator.cs" />
+    <Compile Include="Validation\User\UserWithRolesValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

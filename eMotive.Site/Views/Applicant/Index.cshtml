@@ -1,0 +1,48 @@
+﻿@using eMotive.Models.Objects.Signups
+@using eMotive.SCE.Common.Helpers
+@model UserHomeView
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    /*    if (User.IsInRole("Applicant"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*/
+}
+
+@(Model.HasSignedUp ? Html.Raw(Server.HtmlDecode(Model.PageSections["Applicant-Home-Header-Signed"].Text)) : Html.Raw(Server.HtmlDecode(Model.PageSections["Applicant-Home-Header-Unsigned"].Text)))
+
+@if (ViewBag.GroupDetails != null)
+{
+    @Html.Raw(Server.HtmlDecode(ViewBag.GroupDetails))
+}
+
+@if(!Model.HasSignedUp)
+{
+<div class ="row">
+    <div class="span4 offset2">
+        <a href="@Url.Action("Signups", "Interviews")" role="button" class="btn btn-info" id="SlotSignup">@Model.ButtonText</a>
+    </div>
+</div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <tbody>
+            @foreach (var signup in Model.SignupDetails)
+            {
+                <tr @Html.HomeViewRowStyle(signup.Type)>
+                    <td>@Html.HomeViewRowBadge(signup.Type)</td>
+                    <td>@signup.SignupGroup.Name.ToUpperInvariant()</td>
+                    <td>@signup.SignUpDate.ToString("dddd d MMMM yyyy") at @signup.SignUpDetails</td>
+                    <td><a href="@Url.Action("Slots", "Interviews", new { id = signup.SignupID })" role="button" @Html.HomeViewRowButton(signup.Type) id="SlotCancel">Cancel</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@(Model.HasSignedUp ? Html.Raw(Server.HtmlDecode(Model.PageSections["Applicant-Home-Footer-Signed"].Text)) : Html.Raw(Server.HtmlDecode(Model.PageSections["Applicant-Home-Footer-Unsigned"].Text)))

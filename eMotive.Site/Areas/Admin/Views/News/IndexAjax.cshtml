@@ -1,0 +1,314 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    			<ul class="breadcrumb">
+				<li>
+					<a href="@Url.Action("Index","Home", new {area = "Admin"})">Home</a> <span class="divider">/</span>
+				</li>
+				<li class="active">
+					News
+				</li>
+			</ul>
+}
+<style>
+    .form-horizontal .control-label {
+        width: 70px;
+        margin-right: 10px;
+    }
+    .form-horizontal .controls {
+        margin-left: 0px;
+    }
+</style>
+<div class="page-header">
+    <h2>
+        News Administration
+    </h2>
+</div>
+<button class="btn btn-mini" id="CreateNewsItem">Create News Item</button>
+<div id="NewsContent"></div>
+
+<div class="modal hide fade" id="DeleteModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Delete News Item</h3>
+    </div>
+    <div class="modal-body">
+        <div id="DeleteError" class="alert alert-error fade in">
+            <strong>Error!</strong> <span id="DeleteErrorMessage">An error occured!</span>
+        </div>
+        <input type="hidden" id="DeleteID"/>
+        <p id="DeleteMessage"></p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" id="ConfirmDelete">Yes, Delete</button>
+    </div>
+</div>
+
+<div class="modal hide fade"  id="CreateModal" style="width: 700px;">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Create News Item</h3>
+    </div>
+    <div class="modal-body">
+        <div id="CreateError" class="alert alert-error fade in">
+            <strong>Error!</strong> <span id="CreateErrorMessage">An error occured!</span>
+        </div>
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="CreateTitle">Title</label>
+                <div class="controls">
+                    <input type="text" placeholder="Title" id="CreateTitle">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="CreateBody">Body</label>
+                <div class="controls">
+                    <textarea placeholder="News Item body" style="width: 400px;" class="tinymce" id="CreateBody"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="CreateImage">Image</label>
+                <div class="controls">
+                    <input type="text" placeholder="Image" id="CreateImage">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" id="CreateEnabled"> Enabled
+                    </label>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="CreateSave">Create News Item</button>
+    </div>
+</div>
+
+<div class="modal hide fade"  id="EditModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Edit NewsItem</h3>
+    </div>
+    <div class="modal-body">
+        <div id="EditError" class="alert alert-error fade in">
+            <strong>Error!</strong> <span id="EditErrorMessage">An error occured!</span>
+        </div>
+        <form class="form-horizontal">
+            <input type="hidden" id="EditID"/>
+            <div class="control-group">
+                <label class="control-label" for="EditTitle">Title</label>
+                <div class="controls">
+                    <input type="text" placeholder="Title" id="EditTitle">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="EditBody">Forename</label>
+                <div class="controls">
+                    <input type="text" placeholder="News Item body" id="EditBody">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="EditImage">Image</label>
+                <div class="controls">
+                    <input type="text" placeholder="Image" id="EditImage">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" id="EditEnabled"> Enabled
+                    </label>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="EditSave">Save changes</button>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        var NewsList = (function() {
+
+            var records = {};
+
+            //record template
+            var record = function() {
+                var id = 0;
+                var title = "";
+                var body = "";
+                var author;
+                var created;
+                var updated;
+                var image;
+                var enabled;
+                var archived;
+
+                this.getID = function() { return id; };
+                this.setID = function(_id) { id = _id; };
+
+                this.getTitle = function() { return title; };
+                this.setTitle = function(_value) { title = _value; };
+
+                this.getBody = function() { return body; };
+                this.setBody = function(_value) { body = _value; };
+
+                this.getAuthor = function() { return author; };
+                this.setAuthor = function(_value) { author = _value; };
+
+                this.getCreated = function() { return created; };
+                this.setCreated = function(_value) { created = _value; };
+
+                this.getUpdated = function() { return updated; };
+                this.setUpdated = function(_value) { updated = _value; };
+
+                this.getImage = function() { return image; };
+                this.setImage = function(_value) { image = _value; };
+
+                this.getEnabled = function() { return enabled; };
+                this.setEnabled = function(_value) { enabled = _value; };
+
+                this.getArchived = function() { return archived; };
+                this.setArchivedd = function(_value) { archived = _value; };
+
+                this.generateHTML = function() {
+                    return "<div class=\"media\">" +
+                        "<a class=\"pull-left\" href=\"#\">" +
+                        "<img class=\"media-object\" data-src=\"holder.js/64x64\"></a>" +
+                        "<div class=\"media-body\">" +
+                        "<h4 class=\"media-heading\">Media heading</h4>" +
+                        "</div>" +
+                        "</div>;";
+                };
+            };
+
+            var initialise = function(callback) {
+                Ajax.DoQuery(window.Routes.URL("FetchNewsItems"), function(data) {
+
+                    if (data.results != undefined) {
+
+                        $.each(data.results, function(k, v) {
+
+                            var newRecord = new record;
+
+                            newRecord.setID(v.ID);
+                            newRecord.setName(v.Name);
+                            newRecord.setColour(v.Colour);
+                            addRecord(v.ID, newRecord);
+                        });
+                    }
+                    if (callback != null)
+                        callback();
+
+                });
+            };
+
+            var createRecord = function() {
+                $('#CreateError').hide();
+                $("#CreateModal").modal({ show: true });
+            };
+
+            var addRecord = function(id, newRecord) {
+                records[id] = newRecord;
+            };
+
+            var deleteRecord = function(field) {
+                var recordToDelete = RoleList.Records[field];
+                $("#DeleteID").val(recordToDelete.getID());
+                $("#DeleteMessage").html("Are you sure you wish to delete the role '" + recordToDelete.getName() + "'?");
+                $('#DeleteError').hide();
+                $("#DeleteModal").modal({ show: true });
+            };
+
+
+            var clearRecords = function() {
+                records = {};
+            };
+
+            var updateRecord = function(field) {
+                var editRecord = RoleList.Records[field];
+
+                $("#EditID").val(editRecord.getID());
+                $("#EditName").val(editRecord.getName());
+                $("#EditColour").val(editRecord.getColour());
+                document.getElementById('EditColour').color.fromString("'" + editRecord.getColour() + "'");
+                $('#EditError').hide();
+
+                $("#EditModal").modal({ show: true });
+            };
+
+            var buildList = function() {
+                //if (records.count <= 0)
+                if(records.length === undefined);
+                return "<div class='alert alert-info'>No News Items could be found.</div>";
+
+                var html = ""; //"<div id=\"NewsContent\">";
+
+                $.each(records, function(key, value) {
+                    html += value.generateHTML();
+                });
+
+                // html += "</div>";
+
+                return html;
+            };
+
+            return {
+                Initialise: initialise,
+                AddRecord: addRecord,
+                ClearRecords: clearRecords,
+                Records: records,
+                RecordTemplate: record,
+                GenerateHtml: buildList,
+                UpdateRecord: updateRecord,
+                DeleteRecord: deleteRecord,
+                CreateRecord: createRecord
+            };
+        })();
+
+        $(function() {
+            NewsList.Initialise(function() {
+                $("#NewsContent").html(NewsList.GenerateHtml());
+                $("#CreateNewsItem").click(function() {
+                    NewsList.CreateRecord();
+                });
+            });
+        });
+    </script>
+    
+        <script src="@Url.Content("~/Content/tinymce/tinymce.min.js")"></script> 
+    <script type="text/javascript">
+
+        tinymce.init({
+            selector: "textarea",
+            plugins: [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            mode: "specific_textareas",
+            editor_selector: "tinymce",
+            encoding: "xml",
+            setup: function (editor) {
+                editor.on('SaveContent', function (e) {
+                    e.content = e.content.replace(/&#39/g, '&apos');
+                });
+            }
+
+
+        });
+    </script>
+}

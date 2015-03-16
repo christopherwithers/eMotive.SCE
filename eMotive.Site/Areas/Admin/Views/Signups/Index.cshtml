@@ -1,0 +1,118 @@
+﻿@using System.Linq
+@using eMotive.SCE.Common.Helpers
+@using Extensions
+@using eMotive.Models.Objects.SignupsMod
+@model SignupSearch
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Signups</li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Signup Administration</h2>
+    <div class="row-fluid">
+
+        @using (Html.BeginForm("Index", "Signups", new { area = "Admin" }, FormMethod.Get, new { @class = "form-search pull-right", @id = "searchForm" }))
+        {
+            @Html.HiddenFor(m => m.Page)
+            @Html.HiddenFor(m => m.PageSize)
+            @Html.HiddenFor(m => m.SortBy)
+            @Html.HiddenFor(m => m.OrderBy)
+
+            <div class="input-append">
+                @Html.TextBoxFor(m => m.Query, new { @class = "search-query", placeholder = "Search signups..." })
+
+                <button type="submit" class="btn btn-inverse">
+                    Search <i class="icon-search icon-white"></i>
+                </button>
+            </div>
+            <br /><br />
+            <label>Specialty</label>@Html.DropDownListFor(m => m.SelectedGroupFilter, new SelectList(Model.GroupFilter, "key", "value")) <br/>
+            <label>Location</label>@Html.DropDownListFor(m => m.SelectedLocationFilter, new SelectList(Model.LocationFilter, "key", "value"))
+            <a href="@Url.Action("Index")" class="btn btn-inverse">Clear <i class="icon-remove icon-white"></i></a>
+        }
+    </div>
+</div>
+
+@if (!Model.Signups.HasContent())
+{
+    <div class="alert alert-info">No Signups could be found.</div>
+}
+else
+{
+    <div class="row">
+        <div class="offset1 span8">
+
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Sessions</th>
+                        <th>Main</th>
+                        <th>Reserve</th>
+                        <th>Interested</th>
+                        <th style="display: none;">Interested</th>
+                        <th>Signed up</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var signup in Model.Signups)
+                {
+                    var totalPlaces = signup.Slots.Sum(n => n.PlacesAvailable);
+                    var totalReserve = signup.Slots.Sum(n => n.ReservePlaces);
+                    var TotalInterested = signup.Slots.Sum(n => n.InterestedPlaces);
+                    <tr>
+                        <td>@signup.Group.Name</td>
+                                    <td>@signup.Description</td>
+                        <td>@signup.Date.ToString("dddd d MMMM yyyy")</td>
+                        <td>@signup.Location.Name</td>
+                        <td>@signup.Slots.Count()</td>
+                                    <td>
+                                        @totalPlaces <!--(totalPlaces - signup.Slots.Sum(n => n.ApplicantsSignedUp != null ? (n.ApplicantsSignedUp.Count) : 0))  /-->
+                                    </td>
+                        <td>@totalReserve</td>
+                        <td>@TotalInterested</td>
+                                    <td style="display: none;">@totalReserve</td>
+                                    <td>
+                                        @((totalPlaces  + totalReserve) - signup.Slots.Sum(n => n.NumberSignedUp()))  / @(totalPlaces  + totalReserve)
+                                    </td>
+                                    <td>
+                                        <!--Html.ActionLink("Details", "SignupDetails", "Signups", new {area = "admin", id = signup.ID}, new {class="btn btn-default"}) Html.ActionLink("Edit", "Edit", "Signups", new { area = "admin", id = signup.ID }, new { class = "btn btn-default" })-->
+                                        @Html.ActionLink("Details", "SignupDetails", "Signups", new { area = "admin", id = signup.Id }, new { @class = "btn btn-default" })
+                                        @Html.ActionLink("Edit", "EditSignup", "Signups", new { area = "admin", id = signup.Id }, new { @class = "btn btn-default" })
+                                    </td>
+                                </tr>
+                }
+            </table>
+            @Html.PageLinks(Model, i => Url.Action("Index", new { page = i }), !string.IsNullOrEmpty(Model.SelectedGroupFilter) && Model.SelectedGroupFilter != "0" ? string.Format("SelectedGroupFilter={0}", Model.SelectedGroupFilter) : string.Empty)
+
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $("#SelectedGroupFilter").change(function () {
+            $('form#searchForm').submit();
+            return false;
+        });
+
+        $("#SelectedLocationFilter").change(function () {
+            $('form#searchForm').submit();
+            return false;
+        });
+    </script>
+}

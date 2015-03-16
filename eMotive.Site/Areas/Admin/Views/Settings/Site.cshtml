@@ -1,0 +1,98 @@
+﻿@using eMotive.Services.Objects.Settings
+@model Settings
+@{
+    ViewBag.Title = "Site";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Settings", new { area = "Admin" })">Settings</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            Site Administration
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Site Administration</h2>
+</div>
+@Html.Partial("_modelStateError")
+@using (Html.BeginForm("Site", "Settings", new { area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="control-group">
+        <label class="control-label" for="SiteName">Site name</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.SiteName, new { placeholder = "Site name" })
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="SiteURL">Site URL</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.SiteURL, new { placeholder = "Site URL" })
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="MailFromAddress">Mail from email</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.MailFromAddress, new { placeholder = "Mail from email" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="MaxLoginAttempts">Max login attempts</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.MaxLoginAttempts, new { placeholder = "Max login attempts" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="LockoutTimeMinutes">Lockout time (minutes)</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.LockoutTimeMinutes, new { placeholder = "Lockout time (minutes)" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                @Html.CheckBoxFor(m => m.DisableEmails)
+                Disable emails
+            </label>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="MetaTags">Meta Tags</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.MetaTags, new { placeholder = "Meta Tags" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="GoogleAnalytics">Meta Tags</label>
+        <div class="controls">
+            @Html.TextAreaFor(m => m.GoogleAnalytics, new { placeholder = "Google analytics" })
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                @Html.CheckBoxFor(m => m.AllowWithdrawals)
+                Allow withdrawals
+            </label>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-info">Save</button>
+            <a href="@Url.Action("Index")" class="btn">Cancel</a>
+        </div>
+    </div>
+}

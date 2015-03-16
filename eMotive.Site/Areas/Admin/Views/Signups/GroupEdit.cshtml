@@ -1,0 +1,101 @@
+﻿@using eMotive.Models.Objects.Signups
+@model Group
+@{
+    ViewBag.Title = "GroupEdit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Signups", new { area = "Admin" })">Signups</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Groups", "Signups", new { area = "Admin" })">Groups</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            Edit Group @Model.ID
+        </li>
+    </ul>
+}
+
+<div class="page-header">
+    <h2>Group Details</h2>
+</div>
+
+@Html.Partial("_modelStateError")
+@using (Html.BeginForm("GroupEdit", "Signups", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="control-group">
+            <label class="control-label" for="Name">Name</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.Name, new { placeholder = "Name" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Description">Description</label>
+            <div class="controls">
+                <textarea class="tinymce" cols="20" id="Description" name="Description" rows="2" style="width: 100%; height: 20em;" placeholder="Description">
+                    @Server.HtmlDecode(Model.Description)
+                </textarea>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(m => m.AllowMultipleSignups)
+                    Allow user to sign up to multiple signups
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(m => m.EnableEmails)
+                    Enable emails for all signups associated to this group
+                </label>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(m => m.AllowSelfSignup)
+                    Allow Self Signup
+                </label>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <label class="control-label" for="Description">Self Signup Disabled Message</label>
+            <div class="controls">
+                <textarea class="tinymce" cols="20" id="SelfSignupDeniedMessage" name="SelfSignupDeniedMessage" rows="2" style="width: 100%; height: 20em;" placeholder="Self Signup Disabled Message">
+                    @Server.HtmlDecode(Model.SelfSignupDeniedMessage)
+                </textarea>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="clearfix"></div>
+            <div class="controls">
+                <button type="submit" class="btn btn-info">Save</button>
+                <a href="@Url.Action("Groups")" class="btn">Cancel</a>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section Scripts
+{
+    @Html.Partial("_tinymceEditor")
+}

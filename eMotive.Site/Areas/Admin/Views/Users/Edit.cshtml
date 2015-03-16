@@ -1,0 +1,30 @@
+﻿@using eMotive.Models.Objects.Users
+@model UserWithRoles
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Crumbs
+{
+    			<ul class="breadcrumb">
+			        <li>
+			            <a href="@Url.Action("Index","Home", new {area = "Admin"})">Home</a> <span class="divider">/</span>
+			        </li>
+                <li>
+					<a href="@Url.Action("Index","Users", new {area = "Admin"})">Users</a> <span class="divider">/</span>
+				</li>
+				<li class="active">
+					Edit User
+				</li>
+			</ul>
+}
+<div class="page-header">
+    <h2>
+        Edit User
+    </h2>
+</div>
+@Html.Partial("_modelStateError")
+@using (Html.BeginForm("Edit", "Users", new { area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.Partial("_userForm")
+}

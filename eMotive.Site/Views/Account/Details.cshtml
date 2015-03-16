@@ -1,0 +1,43 @@
+﻿@using eMotive.Models.Objects.Account
+@model ChangePassword 
+@{
+    ViewBag.Title = "MyDetails";
+    Layout = User.IsInRole("SCE") ? "~/Views/Shared/_Layout.cshtml" : "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="page-header">
+     <h2>Details</h2>
+ </div>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-error" style="font-size: 130%;">
+        <a class="close" data-dismiss="alert">×</a>
+        <h5 class="alert-heading">Warning</h5>
+        @Html.ValidationSummary(false)
+    </div>
+}
+@using (Html.BeginForm("Details", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+{ 
+    <div class="control-group">
+        <label class="control-label" for="CurrentPassword">Enter your current password</label>
+        <div class="controls">
+            @Html.PasswordFor(m => m.CurrentPassword, new { placeholder = "Current Password" })
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="NewPassword">Enter your new password</label>
+        <div class="controls">
+            @Html.PasswordFor(m => m.NewPassword, new { placeholder = "New Password" })
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="NewPasswordRetype">Retype your new password</label>
+        <div class="controls">
+            @Html.PasswordFor(m => m.NewPasswordRetype, new { placeholder = "Retype Password" })
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn">Change Password</button>
+        </div>
+    </div>
+}

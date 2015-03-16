@@ -1,0 +1,18 @@
+﻿@model IEnumerable<eMotive.Models.Objects.Users.User>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>List</h2>
+
+@if (Model != null)
+{
+    <table>
+    @foreach (var user in Model)
+    {
+        <tr><td>@(user.Roles != null ? user.Roles.Count().ToString() : "null")</td><td>@user.Username</td></tr>
+    }
+    </table>
+}

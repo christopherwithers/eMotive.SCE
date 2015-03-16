@@ -1,0 +1,36 @@
+﻿@using eMotive.Models.Objects.Certificates
+@model SCECertificate
+@{
+    ViewBag.Title = "PDFView";
+}
+<style>
+    .certBody {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .entrySpacing {
+        margin-top: 80px;
+    }
+</style>
+<div class="certBody" style="margin: 100px;">
+    <img src="~/Content/images/PdfCertificate/UoBLogo.jpg?width=130" style="float: left;" /> <img style="float: right; padding-top:15px;" src="~/Content/images/PdfCertificate/UoBLogoText.png?width=200" />
+    <div style=" clear: right; float: right; padding-right: 38px;">
+        College of Medical and<br/> 
+        Dental Sciences<br/><br/>
+        <b>Education Unit</b><br/>
+        <span style="font-size: 13px;">Telephone: 0121 414 7402</span><br/>
+    </div>
+    <div style="clear: both;"></div>
+
+    <h1 style="width: 390px; margin: 0 auto; margin-top: 80px;">Certificate of Attendance</h1>
+    
+    <p class="entrySpacing">This certificate confirms that <b style="padding-left:10px; font-size: 1.3em;">@Model.Title @Model.Forename @Model.Surname</b></p>
+    <p class="entrySpacing">Grade <b style="padding-left:10px; font-size: 1.3em;">@Model.Grade</b></p>
+    <p class="entrySpacing">Trust/Surgery <b style="padding-left:10px; font-size: 1.3em;">@Model.Trust</b></p>
+    <p class="entrySpacing">Attended the meeting/course <b style="padding-left:10px; font-size: 1.3em;">Briefing for Year 4 Clinical Examiners</b></p>
+    <span style="clear:both;"></span>
+    <p class="entrySpacing">On <b style="padding-left:10px; font-size: 1.3em;">@Model.DateOfCourse</b></p>
+    <p class="entrySpacing">RCP Activity Code Number: <b style="padding-left:10px; font-size: 1.3em;">@Model.RCPNumber</b></p>
+    <b>‘Briefing for Year 3 Clinical Examiners' has been approved by the Federation of the Royal Colleges of Physicians of the United Kingdom for 3 category 1 (external) CPD credit(s).</b>
+    <p class="entrySpacing">Course Organiser's signature: <img src="~/Content/images/PdfCertificate/BevSignature.png" /></p>
+    <p>Date: <b style="padding-left:10px; font-size: 1.3em;">@Model.DateSigned</b></p>
+</div>

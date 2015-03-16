@@ -1,0 +1,217 @@
+﻿@using eMotive.SCE.Common.Helpers
+@using Extensions
+@model eMotive.Models.Objects.Users.SCEData
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index","Home", new {area = "Admin"})">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","Users", new {area = "Admin"})">Users</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            Create Interviewer
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>
+        Create Interviewer
+    </h2>
+</div>
+@Html.Partial("_modelStateError")
+@using (Html.BeginForm("CreateInterviewer", "Users", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="control-group">
+            <label class="control-label" for="Username">Username</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Username, new { placeholder = "Username"})
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <label class="control-label" for="ExaminationNumber">Examination Number</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.ExaminationNumber, new { placeholder = "Examination Number" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Title">Title</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Title, new { placeholder = "Title" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Forename">Forename</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Forename, new { placeholder = "Forename" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Surname">Surname</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Surname, new { placeholder = "Surname" })
+            </div>
+        </div>
+<!--
+        <div class="control-group">
+            <label class="control-label" for="GMCNumber">GMC Number</label>
+            <div class="controls">
+                Html.TextBoxFor(model => model.GMCNumber, new { placeholder = "GMC Number" })
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <label class="control-label" for="MainSpecialty">Specialty</label>
+            <div class="controls">
+                Html.DropDownListFor(n => n.MainSpecialty, new SelectList(ViewBag.GroupDropDown, "ID", "Name"))
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Surname">Examination Number</label>
+            <div class="controls">
+                Html.TextBoxFor(model => model.ExaminationNumber, new { placeholder = "Examination Number" })
+            </div>
+        </div>-->
+
+        <div class="control-group">
+            <label class="control-label" for="inputEmail">Email</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Email, new { placeholder = "Email" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="SecretaryEmail">Secretary Email</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.SecretaryEmail, new { placeholder = "Secretary Email" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="EmailOther">Email Other</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.EmailOther, new { placeholder = "Email Other" })
+            </div>
+        </div>
+        <!--
+        <div class="control-group">
+            <label class="control-label" for="Trust">Trust</label>
+            <div class="controls">
+                Html.DropDownListFor(n => n.Trust, new SelectList(ViewBag.TrustsDropDown, "Key", "Value"))
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Grade">Grade</label>
+            <div class="controls">
+                Html.DropDownListFor(n => n.Grade, new SelectList(ViewBag.GradesDropDown, "Key", "Value"))
+            </div>
+        </div>
+            -->
+        <div class="control-group">
+            <label class="control-label" for="Address1">Address 1</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Address1, new { placeholder = "Address 1" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Address2">Address 2</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Address2, new { placeholder = "Address 2" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="City">City</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.City, new { placeholder = "City" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Region">Region</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Region, new { placeholder = "Region" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Postcode">Postcode</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Postcode, new { placeholder = "Postcode" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="PhoneWork">Phone Work</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.PhoneWork, new { placeholder = "Phone Work" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="PhoneMobile">Phone Mobile</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.PhoneMobile, new { placeholder = "Phone Mobile" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="PhoneOther">Phone Other</label>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.PhoneOther, new { placeholder = "Phone Other" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(m => m.Trained)
+                    Trained
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(m => m.Enabled)
+                    Enabled
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group span6 well">
+            <div class="clearfix"></div>
+            @Html.CheckBoxListForGroups(m => m.BelongsToGroups, Model.AllGroups.ToKeyValuePairList(n => n.ID.ToString(), m => m.Name))
+        </div>
+
+        <div class="control-group">
+            <div class="clearfix"></div>
+            <div class="controls">
+                <button type="submit" class="btn btn-info">Save</button>
+                <a href="@Url.Action("Index")" class="btn">Cancel</a>
+            </div>
+        </div>
+
+    </fieldset>
+}

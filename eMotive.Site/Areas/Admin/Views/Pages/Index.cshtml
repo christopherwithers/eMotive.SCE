@@ -1,0 +1,67 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.Pages
+@using eMotive.SCE.Common.Helpers
+@model PartialPageSearch
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Pages
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Page Administration</h2>
+    <div class="row-fluid">
+        
+        @using (Html.BeginForm("Index", "Pages", new { area = "Admin" }, FormMethod.Post, new { @class = "form-search pull-right" }))
+        {
+            @Html.HiddenFor(m => m.Page)
+            @Html.HiddenFor(m => m.PageSize)
+            @Html.HiddenFor(m => m.NumberOfResults)
+            <div class="input-append">
+                @Html.TextBoxFor(m => m.Query, new{@class="search-query", placeholder="Search pages..."  })
+                    
+                <button type="submit" class="btn btn-inverse">
+                    Search <i class="icon-search icon-white"></i>
+                </button>
+            </div>
+            <a href="@Url.Action("Index")" class="btn btn-inverse">Clear <i class="icon-remove icon-white"></i></a>
+        }
+    </div>
+</div>
+<div>This section allows you to create and edit pages.</div>
+<div  style="margin: 10px;"><a href="@Url.Action("Create")" class="btn">Create Page</a></div>
+@if (!Model.Pages.HasContent())
+{
+    <div class="alert alert-info" style="margin-bottom: 10px;">No pages were found!</div>
+}
+else
+{
+    @Html.HiddenFor(n =>n.ItemType)
+    <table class="table table-bordered table-striped table-hover data-table">
+        <thead><tr><th>Key</th><th>Description</th><th></th></thead>
+        <tbody>
+
+            @foreach (var page in Model.Pages)
+            {
+                <tr>
+                    <td>@page.Key</td>
+                    <td>@page.Description</td>
+                    <td><a href="@Url.Action("Edit", new {key = page.Key})" class="btn btn-default">Edit</a></td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+           @Html.PageLinks(Model,i => Url.Action("Index", new {page = i}))
+}

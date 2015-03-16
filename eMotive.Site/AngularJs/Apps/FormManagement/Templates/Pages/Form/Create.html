@@ -1,0 +1,57 @@
+﻿<div class="page-header">
+    <h2>Create {{form.Name}} Form</h2>
+</div>
+<div class="row">
+    <div class="offset1 span4">
+        <div ng-show="errors" class="alert alert-block alert-error">
+            <h4>Error</h4>
+            <p ng-bind="errors"></p>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Name</th>
+                <td>
+                    <input type="text" ng-model="form.Name" class="form-control" />
+                </td>
+            </tr>
+        </table>
+        <h4>Items</h4>
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <td>Field</td>
+                    <td>Type</td>
+                    <td style="min-width: 210px;"></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody ui-sortable="sortableOptions" ng-model="form.Fields">
+                <tr ng-repeat="item in form.Fields">
+                    <td><input type="text" ng-model="item.Field" class="form-control" /></td>
+                    <td>
+                        <select class="form-control" ng-model="item.Type" ng-change="checkForSelect(item.Type, $index)" ng-options="type.Type as type.Type for type in formTypes" style="width: 200px; float: left; margin-right: 10px;">
+                            <option value="">Select a Type</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" ng-model="item.ListID" ng-show="item.Type == 'DropDownList'" ng-options="list.ID as list.Name for list in lists" style="width: 200px; float: left; margin-right: 10px;">
+                            <option value="">Select a List</option>
+                        </select>
+                    </td>
+                    <td><a href class="btn btn-sm btn-danger" ng-click="removeItem($index)">Remove</a></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <a href class="btn btn-sm btn-default pull-right" ng-click="addItem()">Add</a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <a href ng-click="saveForm()" class="btn btn-primary btn-small pull-right">Save Form</a>
+
+        <a href="#/Home" class="btn btn-small">Return Home</a>
+    </div>
+</div>

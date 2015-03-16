@@ -1,0 +1,47 @@
+﻿@using eMotive.Models.Objects.Users
+@model UserWithRoles
+@Html.HiddenFor(m => m.ID)
+<div class="control-group">
+    <label class="control-label" for="Username">Username</label>
+    <div class="controls">
+        @Html.TextBoxFor(m => m.Username, new { placeholder = "Username" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="Forename">Forename</label>
+    <div class="controls">
+        @Html.TextBoxFor(m => m.Forename, new { placeholder = "Forename" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="Surname">Surname</label>
+    <div class="controls">
+        @Html.TextBoxFor(m => m.Surname, new { placeholder = "Surname" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="Email">Email</label>
+    <div class="controls">
+        @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="SelectedRole">Role</label>
+    <div class="controls">
+        @Html.DropDownListFor(m => m.SelectedRole, ViewBag.Roles as SelectList, "", new { placeholder = "Select a Role" })
+    </div>
+</div>
+<div class="control-group">
+    <div class="controls">
+        <label class="checkbox">
+            @Html.CheckBoxFor(m => m.Enabled)
+            Enabled
+        </label>
+    </div>
+</div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-info">Save</button>
+            <a href="@Url.Action("Index")" class="btn">Cancel</a>
+        </div>
+    </div>

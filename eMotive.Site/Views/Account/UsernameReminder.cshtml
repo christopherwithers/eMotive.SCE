@@ -1,0 +1,35 @@
+﻿@using eMotive.Models.Objects.Account
+@model AccountReminder
+@{
+    ViewBag.Title = "UsernameReminder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Username Reminder</h2>
+</div>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-error" style="font-size: 130%;">
+        <a class="close" data-dismiss="alert">×</a>
+        <h5 class="alert-heading">Warning</h5>
+        @Html.ValidationSummary(false)
+    </div>
+}
+@using (Html.BeginForm("UsernameReminder", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+{ 
+ 
+    <div class="control-group">
+        <label class="control-label" for="EmailAddress">Enter your email address</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Email Address" })
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn">Send Reminder</button>
+            <div>@Html.ActionLink("Back to Login", "Login")</div>
+        </div>
+    </div>
+
+}

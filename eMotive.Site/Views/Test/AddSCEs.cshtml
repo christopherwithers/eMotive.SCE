@@ -1,0 +1,28 @@
+﻿@using Extensions
+@model IEnumerable<eMotive.Models.Objects.Users.UserWithRoles>
+
+@{
+    ViewBag.Title = "AddSCEs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddSCEs</h2>
+
+
+@if (Model.HasContent())
+{
+    <table>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Forename</td>
+                <td>@user.Surname</td>
+                <td>@user.Email</td>
+                <td>@user.Enabled</td>
+                <td>@user.Archived</td>
+                <td>@user.Roles.First().Name</td>
+            </tr>
+        }
+    </table>
+}

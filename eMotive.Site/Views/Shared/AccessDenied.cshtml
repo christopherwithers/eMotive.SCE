@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "AccessDenied";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    ViewBag.Title = "Page Not Found";
+}
+
+<h1>Access Denied</h1>
+<p>you do not have permission to access the requested page: @ViewBag.RequestedUrl</p>
+@if (ViewBag.ReferrerUrl != null) {
+<p>Go back to the <a href="@ViewBag.ReferrerUrl">previous page</a>.</p>
+}
+
+@* Error page must be longer than 512 bytes for IE and Chrome to show it. 
+   So add padding in case we're short. *@
+@(new string(' ', 512))

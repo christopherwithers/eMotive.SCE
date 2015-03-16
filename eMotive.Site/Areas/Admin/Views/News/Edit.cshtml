@@ -1,0 +1,32 @@
+﻿@using eMotive.Models.Objects.News
+@model NewsItem
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Crumbs
+{
+    			<ul class="breadcrumb">
+			        <li>
+			            <a href="@Url.Action("Index","Home", new {area = "Admin"})">Home</a> <span class="divider">/</span>
+			        </li>
+                <li>
+					<a href="@Url.Action("Index","News", new {area = "Admin"})">News</a> <span class="divider">/</span>
+				</li>
+				<li class="active">
+					Edit News Item
+				</li>
+			</ul>
+}
+@Html.Partial("_modelStateError")
+
+@using (Html.BeginForm("Edit", "News", new { area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+   
+    @Html.Partial("_newsItemForm")
+}
+
+@section Scripts
+{
+    @Html.Partial("_tinymceEditor")
+}

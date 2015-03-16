@@ -1,0 +1,54 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.Signups
+@model Signup
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Signups", new { area = "Admin" })">Signups</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            Edit Signup @Model.ID
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Signup Details</h2>
+</div>
+
+@if (Model == null)
+{
+    <div class="alert alert-danger">Error. The Requested signup could not be found.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped table-hover">
+        <tbody>
+            <tr>
+                <td>Date</td>
+                <td>@Model.Date</td>
+            </tr>
+            <tr>
+                <td>Close Date</td>
+                <td>@Model.CloseDate</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+}

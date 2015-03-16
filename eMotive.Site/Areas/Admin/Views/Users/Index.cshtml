@@ -1,0 +1,260 @@
+﻿@using System.Linq
+@using Extensions
+@using eMotive.Models.Objects.Users
+@using eMotive.SCE.Common.Helpers
+@using eMotive.Models.Objects.Search
+@using SortDirection = eMotive.Models.Objects.Search.SortDirection
+@model UserSearch
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Users
+        </li>
+    </ul>
+}
+
+<style>
+    #NotesModal {
+        width: 940px;
+        margin-left: -470px;
+        max-height: 700px;
+    }
+</style>
+
+<div class="page-header">
+    <h2>User Administration</h2>
+    <div class="row-fluid">
+
+        @using (Html.BeginForm("Index", "Users", new { area = "Admin" }, FormMethod.Get, new { @class = "form-search pull-right", @id="searchForm" }))
+        {
+            @Html.HiddenFor(m => m.Page)
+            @Html.HiddenFor(m => m.PageSize)
+            @Html.HiddenFor(m => m.SortBy)
+            @Html.HiddenFor(m => m.OrderBy)
+            
+            <div class="input-append">
+                @Html.TextBoxFor(m => m.Query, new { @class = "search-query", placeholder = "Search users..." })
+
+                <button type="submit" class="btn btn-inverse">
+                    Search <i class="icon-search icon-white"></i>
+                </button>
+            </div>
+            <br/><br />
+            @Html.DropDownListFor(m => m.SelectedRoleFilter, new SelectList(Model.RoleFilter, "key", "value"))
+            <a href="@Url.Action("Index")" class="btn btn-inverse">Clear <i class="icon-remove icon-white"></i></a>
+            <div class="well" id="sceFilters" style="display:none;"></div>
+        }
+    </div>
+</div>
+
+@if (((User)ViewBag.LoggedInUser).Roles.Any(n => n.Name == "Admin" || n.Name == "Super Admin"))
+{
+    <div  style="margin: 10px;"><!--<a href="Url.Action("Create")" class="btn">Create User</a> --> <a href="@Url.Action("CreateAdmin")" class="btn">Create Admin</a> <a href="@Url.Action("CreateSCE")" class="btn">Create SCE</a> <a href="@Url.Action("CreateUGC")" class="btn">Create UGC</a> </div>
+}
+@if (!Model.Users.HasContent())
+{
+    <div class='alert alert-info'>No users could be found.</div>
+}
+else
+{
+    @Html.HiddenFor(n => n.ItemType)
+    <table class="table table-bordered table-striped table-hover data-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th><a href="@string.Format("{0}{1}",Url.Action("Index"), Model.BuildSearchQueryString("Username", Model.OrderBy == SortDirection.DESC ? SortDirection.ASC : SortDirection.DESC))">Username</a></th>
+                <th><a href="@string.Format("{0}{1}", Url.Action("Index"), Model.BuildSearchQueryString("Forename", Model.OrderBy == SortDirection.DESC ? SortDirection.ASC : SortDirection.DESC))">Forename</a></th>
+                <th><a href="@string.Format("{0}{1}", Url.Action("Index"), Model.BuildSearchQueryString("Surname", Model.OrderBy == SortDirection.DESC ? SortDirection.ASC : SortDirection.DESC))">Surname</a></th>
+                <th><a href="@string.Format("{0}{1}", Url.Action("Index"), Model.BuildSearchQueryString("Email", Model.OrderBy == SortDirection.DESC ? SortDirection.ASC : SortDirection.DESC))">Email</a></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var user in Model.Users)
+            {
+                <tr @if (!user.Enabled)
+                    {
+                        <text>class='error'</text>
+                    }>
+                    <td>
+                        @{
+                            var role = user.Roles.First();
+                            @Html.Raw(string.Format("<span class='label label-info' style='background-color:#{0}'>{1}</span>", role.Colour, role.Name))
+                        }
+                    </td>
+                    <td>@user.Username</td>
+                    <td>@user.Forename</td>
+                    <td>@user.Surname</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <div class="btn-group">
+                            <button @if (!user.Enabled) { <text> class='btn btn-danger' </text>   } else { <text> class='btn btn-default' </text> }>Actions</button>
+
+                            <button @if (!user.Enabled) { <text> class='btn btn-danger dropdown-toggle' </text>      } else { <text> class='btn btn-default dropdown-toggle' </text>} data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                @if(((User)ViewBag.LoggedInUser).Roles.Any(n => n.Name == "Admin" || n.Name == "Super Admin"))
+                                {
+                                    if (user.Roles.Any(n => n.Name == "SCE"))
+                                    {
+                                        <li><a href="@Url.Action("EditSCE", new {username = user.Username})">Edit User</a></li>
+                                    }
+                                    else if (user.Roles.Any(n => n.Name == "UGC"))
+                                    {
+                                        <li><a href="@Url.Action("EditUGC", new {username = user.Username})">Edit User</a></li>
+                                    }
+                                    else if (user.Roles.Any(n => n.Name == "Admin"))
+                                    {
+                                        <li><a href="@Url.Action("EditAdmin", new {username = user.Username})">Edit User</a></li>
+                                    }
+                                }
+                                
+                                @if (((User)ViewBag.LoggedInUser).Roles.Any(n => n.Name == "UGC"))
+                                {
+                                    if (user.Roles.Any(n => n.Name == "SCE"))
+                                    {
+                                        <li><a href="@Url.Action("EditSCE", new {username = user.Username})">Edit User</a></li>
+                                    }
+                                }
+                                
+                                @if (((User)ViewBag.LoggedInUser).Roles.Any(n =>  n.Name == "Super Admin"))
+                                {
+                                    if (user.Roles.Any(n => n.Name == "Super Admin"))
+                                    {
+                                        <li><a href="@Url.Action("Edit", new {username = user.Username})">Edit User</a></li>
+                                    }
+                                }
+                                <li><a href="#" onclick="UserActions.FetchEmailLog('@user.Username','@user.Forename','@user.Surname')">View Emails Sent</a></li>
+                                <!--<li><a href="#" onclick="UserActions.FetchSessionLog('@user.Username','@user.Forename','@user.Surname')">View Sessions</a></li>-->
+                                <li><a href="#" onclick="UserActions.ResendAccountCreationEmail('@user.Username')">Resend Account Information Email</a></li>
+                                @if (((User) ViewBag.LoggedInUser).Roles.Any(n => n.Name == "Admin" || n.Name == "Super Admin"))
+                                {
+                                    <li><a href="#" onclick="UserActions.FetchNotes('@user.Username')">Notes</a></li>
+                                }
+                               
+                                    <!-- <li>Html.ActionLink("Create Applicant Letter", "GenerateApplicantLetter", "Users", new {area = "admin", username = user.Username}, null)</li> -->
+                                    <li>@Html.ActionLink("Third Party Signup", "UserSessions", "Signups", new { area = "admin", username = user.Username }, null)</li>
+                                
+                                @if (((User) ViewBag.LoggedInUser).Roles.Any(n => n.Name == "Admin" || n.Name == "Super Admin"))
+                                {
+                                    <li><a href="#" onclick="UserActions.DeleteRecord('@user.Username')"><span class="label label-important">Delete User</span></a></li>
+                                }
+                            </ul>
+
+                        </div>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    @Html.PageLinks(Model, i => Url.Action("Index", new { page = i }), !string.IsNullOrEmpty(Model.SelectedRoleFilter) && Model.SelectedRoleFilter != "0" ? string.Format("SelectedRoleFilter={0}", Model.SelectedRoleFilter) : string.Empty)
+
+    <div class="modal hide fade" id="EmailLog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Email Log</h3>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-info" id="EmailLogMessage"></div>
+            <table id="EmailLogTable" class="table table-bordered table-striped table-condensed">
+                <thead><tr><th>Email</th><th>Sent</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    <div class="modal hide fade" id="ApplicantDetails">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Applicant Details</h3>
+        </div>
+        <div class="modal-body">
+            <div id="ApplicantDetailsInformation"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    
+    <div class="modal hide fade" id="SessionLog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Session Log</h3>
+        </div>
+        <div class="modal-body">
+            <div id="SessionlogInformation"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    
+    <div class="modal hide fade" id="DeleteModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Delete User</h3>
+        </div>
+        <div class="modal-body">
+            <div id="DeleteError" class="alert alert-error fade in">
+                <strong>Error!</strong> <span id="DeleteErrorMessage">An error occured!</span>
+            </div>
+            <input type="hidden" id="DeleteID"/>
+            <p id="DeleteMessage"></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" id="ConfirmDelete">Yes, Delete</button>
+        </div>
+    </div>  
+
+    <div class="modal hide fade" id="NotesModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3><span id="NotesUsernameTitle"></span></h3>
+    </div>
+        <div class="modal-body">
+            <input type="hidden" id="NotesUsername" name="NotesUsername"/>
+            <div id="NotesError" class="alert alert-error fade in">
+                <strong>Error!</strong> <span id="NotesErrorMessage">An error occured!</span>
+            </div>
+
+            <textarea id="NotesText" cols="20" data-val="true" name="Text" rows="2" style="width: 98.5%; height: 15em;"></textarea>
+        </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="SaveNotes">Save</button>
+    </div>
+</div>
+}
+
+@section Scripts
+{
+<script src="~/Scripts/eMotive/UserActionsFunctions.js?v=2"></script>
+<script src="~/Scripts/eMotive/Closures/UserActions.js?v=2"></script>
+    <script>
+        //sceFilters
+       // $(function() {
+
+            //    if ($("option:selected", this).text() == "SCE")
+              //      $("#sceFilters").show();
+
+      //  });
+    </script>
+
+}
+@Html.Partial("_tinymceEditorAjax")

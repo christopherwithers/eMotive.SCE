@@ -1,0 +1,195 @@
+﻿@using System.Activities.Statements
+@using System.Linq
+@using Extensions
+@using eMotive.Models.Objects.Signups
+@model AdminSignupView
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Reports
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Reports</h2>
+</div>
+
+<div class="alert alert-info">
+    <p>These reports contain personal details. Please ensure that downloaded versions are kept confidential.</p>
+    <p>A password to open the report will be emailed to you.</p>
+</div>
+@if (Model.LoggedInUser.Roles.Any(n => n.Name == "Admin" || n.Name == "Super Admin"))
+{
+    <h4>General Reports</h4>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>All Users</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>All SCEs</td>
+                <td>@Html.ActionLink("Download Report", "AllSCEs", "Reports", new {area = "admin"}, new {@class = "btn btn-default"})</td>
+            </tr>
+            <!-- <tr>
+                     <td>SCEs not signed up to a session</td>
+                     <td>Html.ActionLink("Download Report", "NotSignedUp", "Reports", new { area = "admin" }, new { class = "btn btn-default" })</td>
+                 </tr>-->
+        </tbody>
+    </table>
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Not Signed Up</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SCEs Not Signed Up</td>
+                <td>@Html.ActionLink("Download Report", "SCEsNotSignedUp", "Reports", new {area = "admin"}, new {@class = "btn btn-default"})</td>
+            </tr>
+            <!-- <tr>
+                     <td>SCEs not signed up to a session</td>
+                     <td>Html.ActionLink("Download Report", "NotSignedUp", "Reports", new { area = "admin" }, new { class = "btn btn-default" })</td>
+                 </tr>-->
+        </tbody>
+    </table>
+}
+
+<h4>Full Session Report</h4>
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Report</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Full Session Report</td>
+            <td>@Html.ActionLink("Download Report", "FullSessionReport", "Reports", new { area = "admin" }, new { @class = "btn btn-default" })</td>
+        </tr>
+    </tbody>
+</table>
+<div style="display: none;">
+<h4>Individual Session Reports by Site</h4>
+@if (!Model.Signups.HasContent())
+{
+    <div class="alert alert-info">No Signups could be found.</div>
+}
+else
+{
+    var locations = Model.GetSignupsGroupedByLocation();
+
+    <ul class="nav nav-tabs" id="LocationList">
+        @foreach (var key in locations.Keys)
+        {
+            <li><a href="#@key.Replace(' ', '_').Replace('\'','_')" data-toggle="tab">@key</a></li>
+        }
+    </ul>
+
+    <div class="tab-content">
+        @foreach (var item in locations)
+        {
+            var keyName = item.Key.Replace(' ', '_').Replace('\'', '_');
+            <div class="tab-pane" id="@keyName">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Specialty</th>
+                            <th>Date</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @foreach (var signup in item.Value)
+                    {
+                        var totalPlaces = signup.Slots.Sum(n => n.PlacesAvailable + n.InterestedPlaces + n.ReservePlaces);
+                        var totalReserve = signup.Slots.Sum(n => n.ReservePlaces);
+                        <tr>
+                            <td>@signup.Group.Name</td>
+                            <td>@signup.Date.ToString("dddd d MMMM yyyy")</td>
+                            <td>
+                                @((totalPlaces + totalReserve) - signup.Slots.Sum(n => n.NumberSignedUp()))  / @(totalPlaces + totalReserve)
+                            </td>
+                            <td>@Html.ActionLink("Download Report", "InterviewReport", "Reports", new { area = "admin", id = @signup.Id }, new { @class = "btn btn-default" })</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+    </div>
+}
+
+
+<h4>Individual Session Reports by Group</h4>
+@if (!Model.Signups.HasContent())
+{
+    <div class="alert alert-info">No Signups could be found.</div>
+}
+else
+{
+    var interviews = Model.GetSignupsGroupedByGroup();
+
+            <ul class="nav nav-tabs" id="GroupList">
+                @foreach (var key in interviews.Keys)
+                {
+                    <li><a href="#@key.Replace(' ', '_')" data-toggle="tab" >@key</a></li>
+                }
+            </ul>
+
+            <div class="tab-content">
+                @foreach (var item in interviews)
+                {
+                    var keyName = item.Key.Replace(' ', '_');
+                    <div class="tab-pane"  id="@keyName">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Location</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            @foreach (var signup in item.Value)
+                            {
+                                var totalPlaces = signup.Slots.Sum(n => n.PlacesAvailable + n.InterestedPlaces + n.ReservePlaces);
+                                var totalReserve = signup.Slots.Sum(n => n.ReservePlaces);
+                                <tr>
+                                    <td>@signup.Description</td>
+                                    <td>@signup.Date.ToString("dddd d MMMM yyyy")</td>
+                                    <td>
+                                        @((totalPlaces + totalReserve) - signup.Slots.Sum(n => n.NumberSignedUp()))  / @(totalPlaces + totalReserve)
+                                    </td>
+                                    <td>@Html.ActionLink("Download Report", "InterviewReport", "Reports", new { area = "admin", id = @signup.Id }, new { @class = "btn btn-default" })</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+            </div>
+}
+    </div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function ()
+        {
+            $('#GroupList a:first').tab('show');
+            $('#LocationList a:first').tab('show');
+        });
+    </script>
+}

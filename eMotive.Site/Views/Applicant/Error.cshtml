@@ -1,0 +1,23 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.StatusPages
+@model ErrorView
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Error</h1>
+
+@if (Model.Errors.HasContent())
+{
+    <div class="alert alert-error">
+    @foreach (var error in Model.Errors)
+    {
+        <p>@error</p>
+    }
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.ControllerName))
+{
+    <a href="@Model.GetReferrer()" class="btn btn-info">Return to @Model.ControllerName Page</a>
+}

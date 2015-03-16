@@ -1,0 +1,8 @@
+﻿@using  eMotive.Models.Objects.Pages
+@model PartialPage
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(Server.HtmlDecode((Model.Text)))

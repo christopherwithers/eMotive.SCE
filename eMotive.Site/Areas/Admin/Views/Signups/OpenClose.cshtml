@@ -1,0 +1,133 @@
+﻿@model IDictionary<string, List<eMotive.Models.Objects.Signups.SessionDay>>
+@{
+    ViewBag.Title = "OpenClose";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+     .container {
+         overflow-x: visible;    
+     }
+
+     .float {
+         float: left;
+     }
+
+     .dateTitle {
+         clear: both;
+         margin-right: 30px;
+         margin: 5px;
+     }
+
+     .dateBox, .headBox {
+         width: 50px;
+         height: 50px;
+         margin: 2px;
+         padding: 5px;
+         text-align: center;
+         vertical-align: middle;
+         border-radius: 5px; 
+         -moz-border-radius: 5px; 
+         -webkit-border-radius: 5px; 
+         cursor: pointer;
+         opacity:0.7;
+         font-weight: bold;
+         -webkit-transition: opacity 0.3s linear;
+-o-transition: opacity 0.3s linear;
+-moz-transition: opacity 0.3s linear;
+transition: opacity 0.3s linear;
+
+         -webkit-user-select: none; /* Chrome/Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: none;
+user-select: none;
+
+         background-color: #FF9933;
+     }
+
+     .allBox {
+         opacity:1;
+         font-weight:normal;
+     }
+
+     .dayText {
+         font-size: 200%;
+     }
+
+     .sessionCount {
+         font-size: 75%;
+     }
+
+.dateBox:hover, .dateBox.green {
+     background-color: mediumseagreen;
+     opacity:1;
+              -webkit-transition: opacity 0.3s linear;
+-o-transition: opacity 0.3s linear;
+-moz-transition: opacity 0.3s linear;
+transition: opacity 0.3s linear;
+}
+ </style>
+
+<ul class="nav nav-tabs" id="tabs">
+  <li><a href="#fourth" data-toggle="tab">Fourth</a></li>
+  <li><a href="#fifth" data-toggle="tab">Fifth</a></li>
+</ul>
+
+
+<div class="tab-content">
+    <div class="tab-pane active" id="fourth">
+        <table>
+            @foreach (var key in Model.Where(n => n.Key == "January 2014"))
+            {
+                <tr>
+                    <td><div class="dateTitle float">@key.Key</div></td>
+                    <td>
+                        <div class="float headBox allBox" onclick="toggleMonth('@key.Value[0].Date.ToString("MMM")');"><div class="dayText" unselectable="on" >All</div><div class="sessionCount" unselectable="on"></div></div>
+                        @foreach (var item in key.Value.Where(n => n.Date.Month == 1))
+                        {
+                            <div class="float dateBox @item.Date.ToString("MMM")"><div class="dayText" unselectable="on">@item.Date.Day</div><div class="sessionCount" unselectable="on">@item.PlacesLeft/@item.MainPlaces</div></div>
+                        }
+                    </td>
+                </tr>
+            }
+            <tr><td></td><td><button>Save</button></td></tr>
+        </table>
+    </div>
+    <div class="tab-pane active" id="fifth">
+                <table>
+            @foreach (var key in Model.Where(n => n.Key != "January 2014"))
+            {
+                <tr>
+                    <td><div class="dateTitle float">@key.Key</div></td>
+                    <td>
+                        <div class="float headBox allBox" onclick="toggleMonth('@key.Value[0].Date.ToString("MMM")');"><div class="dayText" unselectable="on" >All</div><div class="sessionCount" unselectable="on"></div></div>
+                        @foreach (var item in key.Value.Where(n => n.Date.Month != 1))
+                        {
+                            <div class="float dateBox @item.Date.ToString("MMM")"><div class="dayText" unselectable="on">@item.Date.Day</div><div class="sessionCount" unselectable="on">@item.PlacesLeft/@item.MainPlaces</div></div>
+                        }
+                    </td>
+                </tr>
+            }
+            <tr><td></td><td><button>Save</button></td></tr>
+        </table>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+
+        $(document).ready(function() {
+            $(".dateBox").click(function() {
+                $(this).toggleClass("green");
+            });
+            $('#tabs a:first').tab('show');
+        });
+    
+    function toggleMonth(month) {
+        $("." + month).toggleClass("green");
+        return false;
+    }
+</script>
+}

@@ -1,0 +1,51 @@
+﻿@using eMotive.Models.Objects.Search
+@model SearchStatistics
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Settings", new { area = "Admin" })">Settings</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Search Administration
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Search Administration</h2>
+</div>
+<div class="alert alert-info">There are currently @Model.NumberOfDocuments documents indexed in the search engine.</div>
+<h3>Reindex Documents</h3>
+<p class="text-warning">Please only use the settings below if you know what you're doing.</p>
+<p>Reindexing the search engine will clear all records and will recreate the entire index - this can be time consuming.</p>
+
+<div class="row-fluid">
+    <div class="span3 well">
+        <h4>Reindex all documents</h4>
+        <p style="font-size: smaller;">Clicking the button below will reindex all search documents.</p>
+        <button id="reindexAll" class="btn btn-danger">Reindex</button>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(function() {
+            $("#reindexAll").click(function () {
+                $("#reindexAll").attr('disabled', 'disabled');
+                Ajax.AjaxMessage("Reindexing Documents...");
+                Ajax.DoQuery(window.Routes.URL("ReindexAllDocuments"),
+                    function (data) {
+                        $("#reindexAll").removeAttr('disabled');
+                    });
+
+            });
+        });
+    </script>
+}

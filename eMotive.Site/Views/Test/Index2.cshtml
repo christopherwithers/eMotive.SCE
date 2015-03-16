@@ -1,0 +1,58 @@
+﻿@model IEnumerable<eMotive.Models.Objects.Users.User>
+
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index2</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Index")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Forename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Enabled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Archived)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Forename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Enabled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Archived)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Settings
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Settings</h2>
+</div>
+<div>
+    <p>This section allows you to administer settings for the site.</p>
+    <a href="@Url.Action("Search")" class="btn">Search Settings</a> <a href="@Url.Action("Site")" class="btn">Site Settings</a> 
+    <hr />
+</div>

@@ -1,0 +1,41 @@
+﻿<div class="page-header">
+    <h2>Edit {{dropDownList.Name}} Drop Down List</h2>
+</div>
+<div class="row">
+    <div class="offset1 span4">
+        <div ng-show="errors" class="alert alert-block alert-error">
+            <h4>Error</h4>
+            <p ng-bind="errors"></p>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Name</th>
+                <td>
+                    <input type="text" ng-model="dropDownList.Name" class="form-control" />
+                </td>
+            </tr>
+        </table>
+        <h4>Fields</h4>
+        <table class="table table-bordered">
+            <tr>
+                <td>Value</td>
+                <td>Text</td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="item in dropDownList.Collection">
+                <td><input type="text" ng-model="item.Value" class="form-control" /></td>
+                <td><input type="text" ng-model="item.Text" class="form-control" /></td>
+                <td><a href class="btn btn-sm btn-danger" ng-click="removeItem($index)">Remove</a></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a href class="btn btn-sm btn-default pull-right" ng-click="addItem()">Add</a>
+                </td>
+            </tr>
+        </table>
+
+        <a href ng-click="saveDropDown()" class="btn btn-primary btn-small pull-right">Save Drop Down</a>
+
+        <a href="#/Home?Tab={{tab}}" class="btn btn-small">Return Home</a>
+    </div>
+</div>

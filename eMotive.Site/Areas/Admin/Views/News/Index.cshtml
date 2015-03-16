@@ -1,0 +1,68 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.News
+@using eMotive.SCE.Common.Helpers
+@model NewsSearch
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Crumbs
+{
+    			<ul class="breadcrumb">
+				<li>
+					<a href="@Url.Action("Index","Home", new {area = "Admin"})">Home</a> <span class="divider">/</span>
+				</li>
+				<li class="active">
+					News
+				</li>
+			</ul>
+}
+
+<div class="page-header">
+    <h2>
+        News Administration
+    </h2>
+    <div class="row-fluid">
+        
+        @using (Html.BeginForm("Index", "News", new { area = "Admin" }, FormMethod.Post, new { @class = "form-search pull-right" }))
+        {
+            @Html.HiddenFor(m => m.Page)
+            @Html.HiddenFor(m => m.PageSize)
+            @Html.HiddenFor(m => m.NumberOfResults)
+            <div class="input-append">
+                @Html.TextBoxFor(m => m.Query, new{@class="search-query", placeholder="Search news items..."  })
+                    
+                <button type="submit" class="btn btn-inverse">
+                    Search <i class="icon-search icon-white"></i>
+                </button>
+            </div>
+            <a href="@Url.Action("Index")" class="btn btn-inverse">Clear <i class="icon-remove icon-white"></i></a>
+        }
+    </div>
+</div>
+@if (!Model.NewsItems.HasContent())
+{
+    <div class='alert alert-info'>No News Items could be found.</div>
+}
+else
+{
+    <div class="row-fluid">
+        <div class="offset3 span6">
+            <a href ="@Url.Action("Create", "News", new {area = "Admin"})" class="btn">New News Item</a>
+            @foreach (var item in Model.NewsItems)
+            {
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" data-src="@item.Image"></a>
+                    <div class="media-body">
+                        <h4 class="media-heading">@item.Title                        <a href="@Url.Action("Edit", "News", new {area = "Admin", id=item.ID})" class="btn btn-info btn-small">Edit</a>
+                        <a href="#" class="btn btn-danger btn-small" onclick="alert('deletemodalhere');">Delete</a></h4>
+                        @Html.Raw(Server.HtmlDecode(item.Body))
+                        <p class="text-right muted"><small>Posted on @item.Created.ToString("dddd d MMMM yyyy") by @item.Author.Forename @item.Author.Surname</small></p>
+                    </div>
+                </div>
+            }
+            @Html.PageLinks(Model,i => Url.Action("Index", new {page = i}))
+        </div>
+    </div>
+}

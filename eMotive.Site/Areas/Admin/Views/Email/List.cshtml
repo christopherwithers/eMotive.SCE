@@ -1,0 +1,48 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.Email
+@model IEnumerable<Email>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    			<ul class="breadcrumb">
+				<li>
+					<a href="@Url.Action("Index","Home", new {area = "Admin"})">Home</a> <span class="divider">/</span>
+				</li>
+				<li class="active">
+					Emails
+				</li>
+			</ul>
+}
+			<div class="page-header">
+				<h2>
+					Email Administration
+				</h2>
+			</div>
+
+@if (!Model.HasContent())
+{
+    <div class="alert alert-info">No Emails were found!</div>
+}
+else
+{
+    <div class="span10" style="margin-bottom: 10px;">This section allows you to edit emails which are sent out from the system.</div>
+    <table class="table table-bordered table-striped table-hover data-table">
+        <thead><tr><th>Key</th><th>Title</th><th>Description</th><th></th></tr></thead>
+        <tbody>
+            <tr>
+            @foreach (var email in Model)
+            {
+                <td>@email.Key</td>
+                <td>@email.Title</td>
+                <td>@email.Description</td>
+                <th><a href="@Url.Action("Edit", new {key = email.Key})" class="btn btn-default">Edit</a></th>
+            }
+            </tr>
+        </tbody>
+    </table>
+}

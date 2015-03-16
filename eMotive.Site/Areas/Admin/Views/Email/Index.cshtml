@@ -1,0 +1,77 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.Email
+@using eMotive.SCE.Common.Helpers
+@model EmailSearch
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Emails
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Email Administration</h2>
+        <div class="row-fluid">
+        
+        @using (Html.BeginForm("Index", "Email", new { area = "Admin" }, FormMethod.Post, new { @class = "form-search pull-right" }))
+        {
+            @Html.HiddenFor(m => m.Page)
+            @Html.HiddenFor(m => m.PageSize)
+            @Html.HiddenFor(m => m.NumberOfResults)
+            <div class="input-append">
+                @Html.TextBoxFor(m => m.Query, new{@class="search-query", placeholder="Search emails..."  })
+                    
+                <button type="submit" class="btn btn-inverse">
+                    Search <i class="icon-search icon-white"></i>
+                </button>
+            </div>
+            <a href="@Url.Action("Index")" class="btn btn-inverse">Clear <i class="icon-remove icon-white"></i></a>
+            
+        }
+    </div>
+</div>
+<div>This section allows you to edit emails which are sent out from the system.</div>
+@if (Model.CanCreate)
+{
+    <div  style="margin: 10px;"><a href="@Url.Action("Create")" class="btn">Create Email</a></div>
+}
+@if (!Model.Emails.HasContent())
+{
+    <div class="alert alert-info" style="margin-bottom: 10px;">No Emails were found!</div>
+}
+else
+{
+    @Html.HiddenFor(n =>n.ItemType)
+    <table class="table table-bordered table-striped table-hover data-table">
+        <thead><tr><th>Key</th><th>Title</th><th>Description</th><th></th></tr></thead>
+        <tbody>
+
+            @foreach (var email in Model.Emails)
+            {
+                <tr @if(email.Custom) { <text>class="info"</text>}>
+                    <td>@email.Key</td>
+                    <td>@email.Title</td>
+                    <td>@email.Description</td>
+                    <td><a href="@Url.Action("Edit", new {key = email.Key})" class="btn btn-default">Edit</a>
+                    @if (email.Custom)
+                    {
+                        <a href="@Url.Action("SendCustom", new {key = email.Key})" class="btn btn-primary">Send</a>
+                    }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+           @Html.PageLinks(Model,i => Url.Action("Index", new {page = i}))
+}

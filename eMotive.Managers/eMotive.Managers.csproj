@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0F5F6DA-7B19-4DC7-968C-B386E7602708}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eMotive.Managers</RootNamespace>
+    <AssemblyName>eMotive.Managers</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Cache">
+      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\Cache.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.12.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.8.3\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperManagerConfiguration.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Interfaces\IAccountManager.cs" />
+    <Compile Include="Interfaces\IFormManager.cs" />
+    <Compile Include="Interfaces\IGroupManager.cs" />
+    <Compile Include="Interfaces\INewsManager.cs" />
+    <Compile Include="Interfaces\IPageManager.cs" />
+    <Compile Include="Interfaces\IPartialPageManager.cs" />
+    <Compile Include="Interfaces\IRoleManager.cs" />
+    <Compile Include="Interfaces\ISessionManager.cs" />
+    <Compile Include="Interfaces\IUserManager.cs" />
+    <Compile Include="Objects\AccountManager.cs" />
+    <Compile Include="Objects\FormManager.cs" />
+    <Compile Include="Objects\GroupManager.cs" />
+    <Compile Include="Objects\NewsManager.cs" />
+    <Compile Include="Objects\PageManager.cs" />
+    <Compile Include="Objects\PartialPageManager.cs" />
+    <Compile Include="Objects\RoleManager.cs" />
+    <Compile Include="Objects\Search\PartialPageSearchDocument.cs" />
+    <Compile Include="Objects\Search\PageSearchDocument.cs" />
+    <Compile Include="Objects\Search\NewsSearchDocument.cs" />
+    <Compile Include="Objects\Search\RoleSearchDocument.cs" />
+    <Compile Include="Objects\Search\SignupSearchDocument.cs" />
+    <Compile Include="Objects\Search\SCESearchDocument.cs" />
+    <Compile Include="Objects\Search\UserSearchDocument.cs" />
+    <Compile Include="Objects\SessionManager.cs" />
+    <Compile Include="Objects\Signups\GenerateSlotStatusDTO.cs" />
+    <Compile Include="Objects\UserManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eMotive.Models\eMotive.Models.csproj">
+      <Project>{4747a062-0720-4ea7-98cb-1b12eb4512fe}</Project>
+      <Name>eMotive.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eMotive.Repository\eMotive.Repository.csproj">
+      <Project>{3e476fbe-3562-499e-982c-868bf23414ea}</Project>
+      <Name>eMotive.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eMotive.Search\eMotive.Search.csproj">
+      <Project>{3185eb88-28b3-4997-ad51-023422f2e972}</Project>
+      <Name>eMotive.Search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eMotive.Services\eMotive.Services.csproj">
+      <Project>{8b8eff5a-77dc-48d3-8a17-e10897df74b9}</Project>
+      <Name>eMotive.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

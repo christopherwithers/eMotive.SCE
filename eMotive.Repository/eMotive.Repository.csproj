@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E476FBE-3562-499E-982C-868BF23414EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eMotive.Repository</RootNamespace>
+    <AssemblyName>eMotive.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\..\..\eMotive.CMS\eMotive.CMS\eMotive.CMS.Repositories\bin\Debug\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Extensions">
+      <HintPath>J:\MDSWebLiveData\mymds\Portals\SCE\bin\Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.8.3\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums.cs" />
+    <Compile Include="Interfaces\IFormRepository.cs" />
+    <Compile Include="Interfaces\INewsRepository.cs" />
+    <Compile Include="Interfaces\IPageRepository.cs" />
+    <Compile Include="Interfaces\IRoleRepository.cs" />
+    <Compile Include="Interfaces\ISessionRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Objects\Forms\Form.cs" />
+    <Compile Include="Objects\Forms\FormItem.cs" />
+    <Compile Include="Objects\Forms\FormList.cs" />
+    <Compile Include="Objects\Forms\FormListItem.cs" />
+    <Compile Include="Objects\Forms\FormType.cs" />
+    <Compile Include="Objects\Menu\MenuItem.cs" />
+    <Compile Include="Objects\MySqlFormRepository.cs" />
+    <Compile Include="Objects\MySqlNewsRepository.cs" />
+    <Compile Include="Objects\MySqlPageRepository.cs" />
+    <Compile Include="Objects\MySqlRoleRepository.cs" />
+    <Compile Include="Objects\MySqlSessionRepository.cs" />
+    <Compile Include="Objects\MySqlUserRepository.cs" />
+    <Compile Include="Objects\News\NewsItem.cs" />
+    <Compile Include="Objects\Pages\Page.cs" />
+    <Compile Include="Objects\Pages\PartialPage.cs" />
+    <Compile Include="Objects\Signups\Group.cs" />
+    <Compile Include="Objects\Signups\Location.cs" />
+    <Compile Include="Objects\Signups\SessionAttendance.cs" />
+    <Compile Include="Objects\Signups\Signup.cs" />
+    <Compile Include="Objects\Signups\Slot.cs" />
+    <Compile Include="Objects\Signups\UserSignup.cs" />
+    <Compile Include="Objects\Signups\UserSignupProjection.cs" />
+    <Compile Include="Objects\Signups\WillingToChangeSignup.cs" />
+    <Compile Include="Objects\Users\ApplicantData.cs" />
+    <Compile Include="Objects\Users\Profile.cs" />
+    <Compile Include="Objects\Users\Role.cs" />
+    <Compile Include="Objects\Users\SCEData.cs" />
+    <Compile Include="Objects\Users\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,22 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.StatusPages
+@model SuccessView 
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div style="width: 480px; margin: 0 auto;">
+    <div class="alert alert-success" style="width: 410px;"><h2>Success</h2>@Model.Message</div>
+    @if (Model.Links.HasContent())
+    {
+        foreach (var link in Model.Links)
+        {
+            <a href="@link.URL" class="btn btn-info">@link.Text</a> 
+        }
+    }
+    else
+    {
+        <a href="@Url.Action("Index")" class="btn btn-info">Return Home</a>
+    }
+</div>

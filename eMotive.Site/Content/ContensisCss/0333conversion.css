@@ -1,0 +1,128 @@
+/* ($Id: 0333Conversion.css 1727 2012-08-22 16:42:50Z nixonm $) */
+
+/* CSS converted from original design */
+
+/* breadcrumbs */
+
+#breadcrumbs  {
+color:#999;
+}
+
+#breadcrumbs {
+    background:#fff;
+    float:left;
+	clear:both;
+	width:922px;
+	padding:0 0 10px 10px;
+}
+
+/* This one's to knock out the dt tag when including a description on related lists */
+
+#relatedLinks * dt {
+	display:none;
+}
+
+#relatedContent .sys_sendtoafriend a, 
+#relatedContent .sys_downloadaspdf a,
+#wideContent .sys_col_last_semi .sys_sendtoafriend a,
+#wideContent .sys_col_last_semi .sys_downloadaspdf a,
+#wideContent div.sys_rhsSection .sys_sendtoafriend a,
+#wideContent div.sys_rhsSection .sys_downloadaspdf a  {
+		font-family:"Georgia","Times New Roman";
+		padding-left:45px;
+	}
+
+/* related news */
+
+div#relatedNews div.sys_news-minilist-control div#MiniListing_List ul.sys_itemslist li.sys_subitem {
+
+margin-bottom: 0px;
+
+}
+
+/* sorting mini-map */
+
+#miniMap li {
+	width:186px;
+}
+
+#miniMap li span.sys_sectionHead {
+	font-size:1.8em;
+	font-family:'Georgia','Times New Roman';
+	color: #666666;
+}
+
+/* getting cms nav to work like design */
+
+#mainNav li ul.sys_children li ul.sys_children li a,
+#mainNav li ul.sys_children li a {
+	color:#333;
+}
+
+#mainNav li ul.sys_children li ul.sys_children li a,
+#globalNav h3,
+#globalNav ul li a,
+#main #globalNav li li a,
+#globalNav li {
+	color:#666;
+}
+
+#globalNav ul.sys_grid a,
+#main #globalNav .sys_grid a,
+#main #globalNav li li a:hover {
+	color:#990066;
+}
+#mainNav li div.sys_selected a,
+#mainNav li ul.sys_children li div.sys_currentitem a,
+#mainNav li ul.sys_children li div.sys_selected a,
+#mainNav li ul.sys_children li ul.sys_children li div.sys_currentitem a {
+	color:#666699;
+}	
+	
+
+#mainNav li div.sys_selected
+{
+	/*border:1px solid #ccc; */
+	background-color:#fff;
+	position:relative;
+
+	top:-1px; /* margin:-1px; Fails in IE6 */
+}
+
+/* separated off this item from next to allow for nav item with no children */
+		
+#mainNav li div.sys_currentitem {
+	background-color:#FFF;
+}
+
+#mainNav li ul.sys_children li div.sys_currentitem a,
+#mainNav li ul.sys_children li ul.sys_children li div.sys_currentitem a {
+	background-color:#F3F5F7;
+}
+
+
+#mainNav li div.sys_selected a {
+	background-image:none;	
+	padding-top:5px;
+	padding-bottom:5px;
+
+
+}
+	
+#mainNav li.sys_last a {
+	background-image:none;
+}
+
+.sys_whitebgBox {
+	background:#fff!important;
+	border:1px solid #ccc; 
+}
+
+/* no jscript globalnav fix */
+#globalNav ul {
+	top:45px;
+}
+
+#globalNav ul.sys_origPos {
+	top:67px;
+}

@@ -1,0 +1,75 @@
+﻿@model eMotive.Models.Objects.Users.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Forename)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Forename)
+            @Html.ValidationMessageFor(model => model.Forename)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Surname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Surname)
+            @Html.ValidationMessageFor(model => model.Surname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Enabled)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Enabled)
+            @Html.ValidationMessageFor(model => model.Enabled)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Archived)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Archived)
+            @Html.ValidationMessageFor(model => model.Archived)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

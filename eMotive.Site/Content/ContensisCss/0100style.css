@@ -1,0 +1,308 @@
+﻿/* ($Id: 0100style.css 1921 2012-11-27 15:19:25Z nixonm $) */
+/* Basic website styling */
+
+/*  Colors
+************************************************************************************************************************/
+a:hover
+{
+    color: #66A300;
+}
+h2, h3
+{
+    color: #333;
+}
+ #footerBottom li, #miniMap li a, #breadcrumbs a, #search input, /*blockquote,*/ p
+{
+    color: #666;
+}
+
+#miniMap li a:hover, a
+{
+	color: #990066;
+}
+
+/*  General formatting definitions
+************************************************************************************************************************/
+
+html
+{
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+strong
+{
+	font-weight: bold;
+}
+
+/*blockquote,*/
+p
+{
+	font-size: 1.3em;
+	line-height: 1.3em;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	font-weight: normal;
+	font-family: 'Georgia' , 'Times new Roman';
+	margin-bottom: .5em;
+	line-height: 1em;
+}
+
+h1
+{
+	font-size: 2.8em;
+}
+
+h2
+{
+	font-size: 1.8em;
+}
+
+h3
+{
+	font-size: 1.8em;
+}
+
+hr
+{
+}
+
+sup {
+vertical-align: super;
+font-size: smaller;
+}
+
+sub {
+vertical-align: sub;
+font-size: smaller;
+}
+
+/*  Layout of body and main div's
+************************************************************************************************************************/
+
+body
+{
+	font-size: 62.5%;
+	background: #C3CDDA url('Images/background.gif') no-repeat scroll top center;
+}
+
+div#wrapper
+{
+	width: 976px;
+	margin: 0 auto;
+	min-height: 500px;
+}
+
+div#header
+{
+	border-top: 3px solid #66A300;
+	margin: 0 21px;
+}
+
+div#main
+{
+	clear: both;
+	overflow: hidden;
+	padding: 0 20px 30px 20px;
+	width: 935px;
+	background: #fff url('Images/mainbottom.gif') no-repeat scroll bottom center;
+}
+
+div#content
+{
+	min-height: 541px;
+	height: auto !important;
+	height: 541px;
+}
+
+#main h1
+{
+	margin-left: 10px;
+}
+
+/* Header formatting 
+************************************************************************************************************************/
+
+#search
+{
+	float: right;
+    clear: right;
+	width: 400px;
+    margin-top: 4px;
+    margin-right:0; 
+    margin-bottom: 0;
+}
+
+#search .sys_textBoxWithRedirect {
+	float:right;
+}
+
+#search input
+{
+	float: left;
+    padding: 0;
+    font-family: Georgia, 'Times new Roman';
+}
+#search div.sys_textBoxWithRedirect input.sys_searchBox
+{
+    height: 1.6em;
+    line-height: 1.6em;
+    font-height: 1.6em;
+    margin-right: 10px;
+    border: 1px solid #CCC;
+    background-color: #E5E9EE;
+    color: #000;
+    width: 200px;
+}
+
+#search input.sys_searchButton
+{
+    height: 1.75em;
+    line-height: 1.75em;
+    font-height: 1.6em;
+    cursor: pointer;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: #fff;
+    background-color: #66A300;
+    border: none;
+}
+
+#search div.sys_textBoxWithRedirect label {
+    display:none;
+}
+
+/*Header: Web site logo */
+#header h1 a
+{
+	float: left;
+	width: 202px;
+	height: 48px;
+	background: transparent url('Images/logo.gif') no-repeat scroll top left;
+	margin: 21px 0 20px 10px;
+	text-indent: -9000px;
+}
+
+/* Social Media Links */
+#socialMediaLinks {
+    float: right;
+    position: relative;
+    top: -14px;
+    padding: 2px;
+    padding-bottom: 1px;
+    background-color: #66A300;
+}
+
+#socialMediaLinks ul li {
+    display: inline;
+    padding: 0;
+    padding-left: 1px;
+}
+
+/* Content formatting 
+************************************************************************************************************************/
+
+#wideContent 
+{
+	float: left;
+	display: inline;
+	width: 725px;
+}
+
+/* Footer Styles 
+************************************************************************************************************************/
+
+#footer
+{
+	clear: both;
+	background: transparent url('Images/bgfooter.gif') repeat-x scroll top center;
+	overflow: hidden;
+	height: 1%;
+	padding: 10px 20px;
+}
+#miniMap
+{
+	width: 934px;
+}
+#miniMap li
+{
+	float: left;
+	width: 187px;
+	margin: 0 0 .9em 0;
+	padding: 0;
+}
+
+#miniMap ul
+{
+	margin-top: .9em;
+	overflow: hidden;
+}
+
+#miniMap li a
+{
+	font-size: 1.8em;
+	font-family: 'Georgia' , 'Times New Roman';
+}
+#miniMap li a:hover
+{
+}
+#footer li li a
+{
+	font-size: 1.2em;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#footer a:hover
+{
+	text-decoration: underline;
+}
+#miniMap
+{
+	overflow: hidden;
+	height: 1%;
+	padding-bottom: 20px;
+	background: transparent url('Images/dotsfooter.gif') repeat-x scroll bottom center;
+}
+#footerBottom
+{
+	clear: both;
+	padding-top: 12px;
+}
+#footerBottom li
+{
+	float: left;
+	font-size: 1.3em;
+	padding-right: 10px;
+	margin-right: 10px;
+	background: transparent url('Images/dividerfooter.gif') no-repeat scroll 100% 2px;
+}
+#footerBottom li.sys_first, #footerBottom li.sys_last
+{
+	background: none;
+}    
+
+h1, h2, h3 {
+        line-height: 1em;
+        font-family: "Georgia", "Times new Roman";
+        font-weight: normal;
+        color: #66a300;
+        
+        
+    }
+
+    #main h1 {
+        margin-left: 0;
+    }
+
+	h3 {
+		margin-top: 20px;
+	}
+
+	.lastItem {
+		padding-bottom: 20px;
+	}

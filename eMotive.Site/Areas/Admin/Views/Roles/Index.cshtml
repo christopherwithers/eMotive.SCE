@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    			<ul class="breadcrumb">
+				<li>
+					<a href="@Url.Action("Index","Home", new {area = "Admin"})">Home</a> <span class="divider">/</span>
+				</li>
+				<li class="active">
+					Roles
+				</li>
+			</ul>
+}
+			<div class="page-header">
+				<h2>
+					Role Administration
+				</h2>
+			</div>
+<button class="btn btn-mini" id="CreateRole">Create Role</button>
+<div id="RoleList"></div>
+
+<div class="modal hide fade" id="DeleteModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Delete Role</h3>
+    </div>
+    <div class="modal-body">
+        <div id="DeleteError" class="alert alert-error fade in">
+            <strong>Error!</strong> <span id="DeleteErrorMessage">An error occured!</span>
+        </div>
+        <input type="hidden" id="DeleteID"/>
+        <p id="DeleteMessage"></p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" id="ConfirmDelete">Yes, Delete</button>
+    </div>
+</div>
+
+
+<div class="modal hide fade"  id="EditModal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Edit Role</h3>
+      </div>
+        <div class="modal-body">
+            <div id="EditError" class="alert alert-error fade in">
+                <strong>Error!</strong> <span id="EditErrorMessage">An error occured!</span>
+            </div>
+            <form class="form-horizontal">
+                <input type="hidden" id="EditID"/>
+                <div class="control-group">
+                    <label class="control-label" for="EditName">Role Name</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Name" id="EditName">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="EditColour">Colour</label>
+                    <div class="controls">
+                        <input type="text" class="color"  id="EditColour">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="EditSave">Save changes</button>
+      </div>
+</div>
+
+<div class="modal hide fade"  id="CreateModal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Create Role</h3>
+      </div>
+        <div class="modal-body">
+            <div id="CreateError" class="alert alert-error fade in">
+                <strong>Error!</strong> <span id="CreateErrorMessage">An error occured!</span>
+            </div>
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="CreateName">Role Name</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Name" id="CreateName">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="CreateColour">Colour</label>
+                    <div class="controls">
+                        <input type="text" class="color"  id="CreateColour">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="CreateSave">Save changes</button>
+      </div>
+</div>
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/eMotive/Closures/RoleList.js?v=0.1")"></script>  
+    <script src="@Url.Content("~/Scripts/eMotive/RoleFunctions.js?v=0.1")"></script>  
+}

@@ -1,0 +1,47 @@
+﻿@using eMotive.Models.Objects.Email
+@model Email
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    			<ul class="breadcrumb">
+			        <li>
+			            <a href="@Url.Action("Index","Home", new {area = "Admin"})">Home</a> <span class="divider">/</span>
+			        </li>
+                <li>
+					<a href="@Url.Action("Index","Email", new {area = "Admin"})">Emails</a> <span class="divider">/</span>
+				</li>
+				<li class="active">
+					Edit Email
+				</li>
+			</ul>
+}
+<div class="page-header">
+    <h2>
+        Edit Email
+    </h2>
+</div>
+@Html.Partial("_modelStateError")
+<div class="row-fluid">
+    <div class="span10">
+        @using (Html.BeginForm("Edit", "Email", new {area="Admin"}, FormMethod.Post, new {@class = "form-horizontal"}))
+        {
+            @Html.HiddenFor(m => m.ID)
+            @Html.HiddenFor(m => m.Key)
+            @Html.Partial("_emailForm")
+        }
+    </div>
+    <div class="span2">
+        <div class="well">
+            @Html.Partial("_emailInfoWell")
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Html.Partial("_tinymceEditor")
+}

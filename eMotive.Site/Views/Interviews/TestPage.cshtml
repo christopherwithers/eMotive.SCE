@@ -1,0 +1,121 @@
+﻿@using Extensions
+@using eMotive.SCE.Common.Helpers
+@using eMotive.Models.Objects.Signups
+
+@model UserSignupView
+
+@{
+    ViewBag.Title = "TestPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(Server.HtmlDecode((Model.HeaderText)))
+
+
+@if (!Model.SignupInformation.HasContent())
+{
+    <div>No signup's could be found.</div>
+}
+else
+{
+    if (Model.SignedUp)
+    {
+        @Html.HiddenFor(m => m.SignupID)
+    }
+
+
+    <table class="table table-striped table-hover">
+        <tbody>
+            @foreach (var slot in Model.SignupInformation.Select(n => n.SignupNumbers))
+            {
+                <tr id="slot_class_"><!-- Html.SetStatusStyle(slot.TotalSlotsAvailable, slot.PlacesAvailable(), slot.IsSignedUpToSlot())-->
+                    <td id="badgelocation" style="width: 60px;">
+            
+                            @Html.Raw("&nbsp;");
+                        
+                    </td>
+                    <td>here</td>
+                    <td id="slot_value_">slot.PlacesAvailableString()</td>
+                    <td>
+                        <!--Html.SetSlotStatusButton(slot.TotalPlacesAvailable, slot.PlacesAvailable, slot.Status == SlotStatus.AlreadySignedUp)-->
+                        <button >Html.GetSignupStatusName(slot.Status)</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <ul class="nav nav-tabs" id="GroupLists" style="font-size: 130%;">
+        @foreach (var item in Model.GetSignupsByGroup())
+        {
+
+            <li><a href="#@item.Key.Replace(' ', '_')" data-toggle="tab">@item.Key Sessions (@item.Value.Count())</a></li>
+
+        }
+    </ul>
+    <div class="tab-content">
+        @foreach (var item in Model.GetSignupsByGroup())
+        {
+            <div class="tab-pane" id="@item.Key.Replace(' ', '_')">
+                <div class="alert-info alert">
+                    @Html.Raw(Server.HtmlDecode(Model.GetDescription(item.Key)))
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                        @foreach (var signup in item.Value)
+                        {
+                            <tr id="signup_class_@signup.ID" @Html.SetStatusStyle(signup.TotalSlotsAvailable, 0 /*signup.SlotsAvailable*/, signup.SignedUp)>
+
+                                <td id="badgelocation" style="width: 60px;">
+                                    @if (signup.SignedUp)
+                                    {
+                                        <span class="label label-success">Signed Up</span>
+                                        foreach (var type in signup.SignupTypes)
+                                        {
+                                            <span class="label label-success">@type</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("&nbsp")
+
+                                    }
+                                </td>
+                                <td>@signup.Date.ToString("dddd d MMMM yyyy")</td>
+
+
+                                <td id="signup_value_@signup.ID">@signup.SlotsAvailableString()</td>
+                                <td>
+                                    <form action="@Url.Action("Slots", "Interviews", new {area = "", id = signup.ID})">
+                                        <button id="signup_button_@signup.ID" @Html.SetStatusButton(signup.TotalSlotsAvailable, 0 /*signup.SlotsAvailable*/, signup.SignedUp) type="submit">View</button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+    @Html.Raw(Server.HtmlDecode((Model.FooterText)))
+}
+
+@section footer
+{
+    <script type="text/javascript">
+        var hash = document.location.hash;
+        var prefix = "tab_";
+        if (hash) {
+            $('#GroupLists a[href=' + hash.replace(prefix, "") + ']').tab('show');
+        } else {
+            $('#GroupLists a:first').tab('show');
+        }
+
+        // Change hash for page-reload
+        $('#GroupLists  a').on('shown', function (e) {
+            window.location.hash = e.target.hash.replace("#", "#" + prefix);
+        });
+    </script>
+}

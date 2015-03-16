@@ -1,0 +1,27 @@
+﻿@using System.Web.Mvc.Html
+@using eMotive.SCE.Controllers
+@model TestController.DictTester
+@{
+    ViewBag.Title = "DictTest";
+}
+
+<h2>DictTest</h2>
+@Html.Partial("_modelStateError")
+@using (Html.BeginForm("DictTest", "Test", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    for (var i = 0; i < Model.SomeStuff.Count; i++)
+    {
+        switch (Model.SomeStuff[i].Type)
+         {
+             case TestController.FieldType.Text:
+                    @Html.HiddenFor(n => Model.SomeStuff[i].Type) @Html.HiddenFor(n => Model.SomeStuff[i].Name) @Model.SomeStuff[i].Name @Html.TextBoxFor(n => Model.SomeStuff[i].Value) 
+                    break;
+                 case TestController.FieldType.DropDownList:
+                    @Html.HiddenFor(n => Model.SomeStuff[i].Type) @Html.HiddenFor(n => Model.SomeStuff[i].Name) @Model.SomeStuff[i].Name @Html.DropDownListFor(n => n.SomeStuff[i].Value, new SelectList(Model.DropDowns[@Model.SomeStuff[i].Name], "Key", "Value", Model.SomeStuff[i].Value), "Select an option")
+                    break;
+                 default:
+                    break;
+         }
+    }
+    <button type="submit" class="btn btn-info">Submit</button>
+}

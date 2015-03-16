@@ -1,0 +1,249 @@
+/* ($Id: 0200navi.css 876 2011-08-22 09:53:27Z winterjp $) */
+
+/* Navigation css */
+
+#mainNav {
+	background:transparent url('Images/contentleft.gif') repeat-y scroll top left;
+}
+
+#mainNav li a {
+	color:#666;
+}
+
+#globalNav li.sys_iehover a, 
+#globalNav li:hover a {
+	color:#66A300;
+}
+
+#mainNav li.sys_selected li.sys_current li a,
+#mainNav li.sys_selected li a {
+	color:#333;
+}
+
+#mainNav li.sys_selected li.sys_selected li a,
+#globalNav h3,
+#globalNav ul li a,
+#main #globalNav li li a,
+#globalNav li {
+	color:#666;
+}
+
+#globalNav ul.sys_grid a,
+#main #globalNav .sys_grid a,
+#main #globalNav li li a:hover {
+	color:#990066;
+}
+#mainNav li.sys_selected a,
+#mainNav li.sys_selected li.sys_current a,
+#mainNav li.sys_selected li.sys_selected li.sys_current a {
+	color:#666699;
+}
+
+/* Global Navigation Bar 
+************************************************************************************************************************/
+
+#globalNav {
+	padding-top:20px;
+	background:transparent url('Images/navtop.gif') no-repeat scroll top center;
+	text-align:justify;
+	zoom:1; /*Stop IE6 from expanding height*/
+}
+
+	#globalNav div.sys_overlay {
+		display:none;
+	}
+	
+	/*hover*/
+
+/*
+lets get rid of this 
+
+	#globalNav li.sys_iehover div.sys_overlay, 
+	#globalNav li:hover div.sys_overlay {
+		position:absolute;
+		display:block;
+		top:47px;
+		left:0;
+		width:935px;
+		height:500px;
+	}
+*/	
+	/*hover*/
+	#overlay,
+	.sys_overlay2,
+	#globalNav li.sys_iehover div.sys_overlay div,
+	#globalNav li:hover div.sys_overlay div {
+		position:absolute;
+		display:block;
+		top:20px;
+		left:0;
+		width:935px;
+		height:500px;
+		background:#fff;
+	}
+	
+	#overlay {
+		top:67px;
+	}
+		
+
+#navWrap {
+	padding-bottom:20px;
+	background:transparent url('Images/navbottom.gif') no-repeat scroll bottom center;
+	position:relative;
+	z-index:100;
+}
+	
+	#globalNav li {
+		font-size:1.44em;
+		display:inline;
+		font-family:'Georgia';
+		text-align:left;
+		padding-right:0px;
+	}
+	
+	#globalNav a {
+		font-size:1.45em;
+		font-family:'Georgia';
+		font-weight:normal;
+	}
+	
+		/*hover*/
+		#globalNav li:hover a {
+			text-decoration:none;
+		}
+		
+			#main #globalNav li li a {
+			}
+			
+			#main #globalNav li li a:hover {
+			}
+			
+		
+	#globalNav ul {
+		border:1px solid #ddd;
+		position:absolute;
+		width:182px;
+		background:#fff;
+		top:67px;
+		left:-9000px;
+		padding:10px 8px;
+		z-index:4;
+	}
+	
+		#globalNav li li {
+			font-size:1em;
+			display:list-item;
+			background:transparent url('Images/dots.gif') repeat-x scroll bottom left;
+			padding-left:0; 
+			padding-right:5px; 
+			padding-top:5px; 
+			padding-bottom:5px;
+			zoom:1;
+		}
+		
+			#globalNav li li.sys_first {
+				padding-top:0;
+			}
+		
+			#globalNav li li.sys_last {
+				background:none;
+				padding-bottom:0;
+			}
+	
+		#globalNav ul li a {
+			font-size:0.867em;
+			font-family:'Arial';
+			background:transparent url('Images/bulletgreen.gif') no-repeat scroll 0 6px;
+			padding-left:13px;
+			display:block;
+		}
+	
+	#main #globalNav div.sys_showPicture {
+		display:none;
+		position:absolute;
+		width:auto;
+		height:auto;
+		padding:10px;
+		background:#fff;
+		z-index:500;
+		top:100px;
+		left:180px;
+	}
+
+	/*hover*/
+	#navUniversity.sys_iehover ul,
+	#navUniversity:hover ul {
+		left:10px;
+	}
+	
+	#navCommunity.sys_iehover ul,
+	#navCommunity:hover ul {
+		left:120px;
+	}
+	
+	#navStudents.sys_iehover ul,
+	#navStudents:hover ul {
+		left:250px;
+	}
+	
+	#navPartners.sys_iehover ul,
+	#navPartners:hover ul {
+		left:350px;
+	}
+	
+	#navAlumni.sys_iehover ul,
+	#navAlumni:hover ul {
+		left:411px;
+	}
+	
+	#navStaff.sys_iehover ul,
+	#navStaff:hover ul {
+		left:491px;
+	}	
+	
+	#navResearch.sys_iehover ul,
+	#navResearch:hover ul {
+		left:605px;
+	}
+	
+	#navInternational.sys_iehover ul,
+	#navInternational:hover ul {
+		left:730px;
+	}
+
+#main #overlay {
+	opacity:.85;
+}
+
+.sys_overlay2 {
+	opacity:.5;
+	z-index:400;
+}
+
+
+/* Main Navigation Bar 
+************************************************************************************************************************/
+
+#mainNav {
+	width:200px;
+	font-size:1.3em;
+	float:left;
+	margin-right:10px;
+    min-height: 50px;
+}
+	#mainNav li {
+		padding:5px 5px 0 10px;
+		background:transparent url('Images/navbullet.gif') no-repeat scroll 10px 13px;
+	}
+		#mainNav li a {
+			background:transparent url('Images/navdotslv1.gif') repeat-x scroll bottom left;
+			padding:2px 5px 8px 13px;
+			width:160px;
+			display:block;
+			
+		}	
+
+	#mainNav li.sys_last a {
+		background-image:none;
+	}

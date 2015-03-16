@@ -1,0 +1,31 @@
+﻿@model eMotive.Models.Objects.Pages.Page   
+
+@Html.HiddenFor(m => m.Created)
+ <div class="control-group">
+        <label class="control-label" for="Title">Title</label>
+        <div class="controls">
+            @Html.TextBoxFor(n => n.Title)
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Body">Body</label>
+        <div class="controls">
+            <textarea class="tinymce" cols="20"  id="Body" name="Body" rows="2" style="width: 100%; height: 30em;">
+                @Server.HtmlDecode(Model.Body)         
+            </textarea>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                @Html.CheckBoxFor(m => m.Enabled)
+                Enabled
+            </label>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-info">Save</button>
+            <a href="@Url.Action("Index")" class="btn">Cancel</a>
+        </div>
+    </div>

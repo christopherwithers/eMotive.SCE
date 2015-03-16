@@ -1,0 +1,177 @@
+﻿<error errorId="1b6fd68a-fd24-4d62-89ad-4d7aaf80b906" application="/LM/W3SVC/32/ROOT" host="COLMDS-5KPW95J" type="System.Exception" message="Elmah Test" source="eMotive.SCE" detail="System.Exception: Elmah Test&#xD;&#xA;   at eMotive.SCE.Areas.Admin.Controllers.UsersController.Index(UserSearch userSearch) in c:\Users\withersc\Dropbox\eMotive.SCE\eMotive.Site\Areas\Admin\Controllers\UsersController.cs:line 59&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass42.&lt;BeginInvokeSynchronousActionMethod&gt;b__41()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass8`1.&lt;BeginSynchronous&gt;b__7(IAsyncResult _)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass37.&lt;&gt;c__DisplayClass39.&lt;BeginInvokeActionMethodWithFilters&gt;b__33()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass4f.&lt;InvokeActionMethodFilterAsynchronously&gt;b__49()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass4f.&lt;InvokeActionMethodFilterAsynchronously&gt;b__49()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass4f.&lt;InvokeActionMethodFilterAsynchronously&gt;b__49()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass37.&lt;BeginInvokeActionMethodWithFilters&gt;b__36(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;&gt;c__DisplayClass2a.&lt;BeginInvokeAction&gt;b__20()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;BeginInvokeAction&gt;b__22(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c__DisplayClass1d.&lt;BeginExecuteCore&gt;b__18(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c__DisplayClass8.&lt;BeginProcessRequest&gt;b__3(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="withersc" time="2014-03-05T10:50:33.7692820Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-GB&#xD;&#xA;HTTP_COOKIE:jdash-collapse-DashboardContent=1-1-0; jdash-index-DashboardContent=0%2C1%7C0%2C0%7C1%2C2; ss-pid=DkRLHfa+/V2VHpGpfQOV; glimpsePolicy=On; .ASPXAUTH=10F9D1ADFEA0C9EC373DF9DE0C61C512575AF9A31B5DB23626C21050E61B6BD686C5EE8BF92BA2995B56ACBE9F33E0827A7450182577608666E638139AA7B558A092208A0FC99EEAB83EAC4F5985650186931947D1A466F97BA6780C3C43D59B; .ASPXROLES=J8riIdPt66weUR7WdmTXi8cMmzMDUQzYH8jr8um662X5RcMl8QGnKne6K7tylQBJjrbHRfPt8xNgiaitQ7dFZU0g2HIrJpQPJznh1Q4TlteNSlTyGCz2zFjmty2s3mgtV19kVyqxTRZaYTL7Ps73s0mWvZC61P-dW94Pc--4PurOFwH7T6qc1vsULGMDsq3N8NTMkHv-tukbOqQhdDKCYczdoN28mB232Wc9-dd9q8qziT3e_tRQIJB63heZSGF5Ls4Msmt5jVjxl9gaqtCflyWy67DqMd5qYkbvYUM5z0GJdJd6nhcHqRBRvW_BEU0_RJ_oVe51y6u-kqnqSLw9SMIx4LHknx3nTMvTPS9P9y457aMeHDFu2uyr9AIwTUysdlwM9d1-STzw8GLaC3fsemJ8W3hKRgLL0Aw_Wci5DIwkOpZoxB5RzG3YJuA9I_sjLRj6FEtnW9KVGItMTqETQcaehJ1sVKsgTRRjVh155F2bJtCpkyZ_bMDgqUW4V7pT0&#xD;&#xA;HTTP_HOST:localhost:58914&#xD;&#xA;HTTP_REFERER:http://localhost:58914/Admin&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: text/html, application/xhtml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-GB&#xD;&#xA;Cookie: jdash-collapse-DashboardContent=1-1-0; jdash-index-DashboardContent=0%2C1%7C0%2C0%7C1%2C2; ss-pid=DkRLHfa+/V2VHpGpfQOV; glimpsePolicy=On; .ASPXAUTH=10F9D1ADFEA0C9EC373DF9DE0C61C512575AF9A31B5DB23626C21050E61B6BD686C5EE8BF92BA2995B56ACBE9F33E0827A7450182577608666E638139AA7B558A092208A0FC99EEAB83EAC4F5985650186931947D1A466F97BA6780C3C43D59B; .ASPXROLES=J8riIdPt66weUR7WdmTXi8cMmzMDUQzYH8jr8um662X5RcMl8QGnKne6K7tylQBJjrbHRfPt8xNgiaitQ7dFZU0g2HIrJpQPJznh1Q4TlteNSlTyGCz2zFjmty2s3mgtV19kVyqxTRZaYTL7Ps73s0mWvZC61P-dW94Pc--4PurOFwH7T6qc1vsULGMDsq3N8NTMkHv-tukbOqQhdDKCYczdoN28mB232Wc9-dd9q8qziT3e_tRQIJB63heZSGF5Ls4Msmt5jVjxl9gaqtCflyWy67DqMd5qYkbvYUM5z0GJdJd6nhcHqRBRvW_BEU0_RJ_oVe51y6u-kqnqSLw9SMIx4LHknx3nTMvTPS9P9y457aMeHDFu2uyr9AIwTUysdlwM9d1-STzw8GLaC3fsemJ8W3hKRgLL0Aw_Wci5DIwkOpZoxB5RzG3YJuA9I_sjLRj6FEtnW9KVGItMTqETQcaehJ1sVKsgTRRjVh155F2bJtCpkyZ_bMDgqUW4V7pT0&#xD;&#xA;Host: localhost:58914&#xD;&#xA;Referer: http://localhost:58914/Admin&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/32/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\withersc\Dropbox\eMotive.SCE\eMotive.Site\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="withersc" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="withersc" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="withersc" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="32" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/32" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Admin/Users" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\withersc\Dropbox\eMotive.SCE\eMotive.Site\Admin\Users" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="49209" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Admin/Users" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="58914" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/Admin/Users" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-GB" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="jdash-collapse-DashboardContent=1-1-0; jdash-index-DashboardContent=0%2C1%7C0%2C0%7C1%2C2; ss-pid=DkRLHfa+/V2VHpGpfQOV; glimpsePolicy=On; .ASPXAUTH=10F9D1ADFEA0C9EC373DF9DE0C61C512575AF9A31B5DB23626C21050E61B6BD686C5EE8BF92BA2995B56ACBE9F33E0827A7450182577608666E638139AA7B558A092208A0FC99EEAB83EAC4F5985650186931947D1A466F97BA6780C3C43D59B; .ASPXROLES=J8riIdPt66weUR7WdmTXi8cMmzMDUQzYH8jr8um662X5RcMl8QGnKne6K7tylQBJjrbHRfPt8xNgiaitQ7dFZU0g2HIrJpQPJznh1Q4TlteNSlTyGCz2zFjmty2s3mgtV19kVyqxTRZaYTL7Ps73s0mWvZC61P-dW94Pc--4PurOFwH7T6qc1vsULGMDsq3N8NTMkHv-tukbOqQhdDKCYczdoN28mB232Wc9-dd9q8qziT3e_tRQIJB63heZSGF5Ls4Msmt5jVjxl9gaqtCflyWy67DqMd5qYkbvYUM5z0GJdJd6nhcHqRBRvW_BEU0_RJ_oVe51y6u-kqnqSLw9SMIx4LHknx3nTMvTPS9P9y457aMeHDFu2uyr9AIwTUysdlwM9d1-STzw8GLaC3fsemJ8W3hKRgLL0Aw_Wci5DIwkOpZoxB5RzG3YJuA9I_sjLRj6FEtnW9KVGItMTqETQcaehJ1sVKsgTRRjVh155F2bJtCpkyZ_bMDgqUW4V7pT0" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:58914" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:58914/Admin" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="jdash-collapse-DashboardContent">
+      <value string="1-1-0" />
+    </item>
+    <item name="jdash-index-DashboardContent">
+      <value string="0%2C1%7C0%2C0%7C1%2C2" />
+    </item>
+    <item name="ss-pid">
+      <value string="DkRLHfa+/V2VHpGpfQOV" />
+    </item>
+    <item name="glimpsePolicy">
+      <value string="On" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="10F9D1ADFEA0C9EC373DF9DE0C61C512575AF9A31B5DB23626C21050E61B6BD686C5EE8BF92BA2995B56ACBE9F33E0827A7450182577608666E638139AA7B558A092208A0FC99EEAB83EAC4F5985650186931947D1A466F97BA6780C3C43D59B" />
+    </item>
+    <item name=".ASPXROLES">
+      <value string="J8riIdPt66weUR7WdmTXi8cMmzMDUQzYH8jr8um662X5RcMl8QGnKne6K7tylQBJjrbHRfPt8xNgiaitQ7dFZU0g2HIrJpQPJznh1Q4TlteNSlTyGCz2zFjmty2s3mgtV19kVyqxTRZaYTL7Ps73s0mWvZC61P-dW94Pc--4PurOFwH7T6qc1vsULGMDsq3N8NTMkHv-tukbOqQhdDKCYczdoN28mB232Wc9-dd9q8qziT3e_tRQIJB63heZSGF5Ls4Msmt5jVjxl9gaqtCflyWy67DqMd5qYkbvYUM5z0GJdJd6nhcHqRBRvW_BEU0_RJ_oVe51y6u-kqnqSLw9SMIx4LHknx3nTMvTPS9P9y457aMeHDFu2uyr9AIwTUysdlwM9d1-STzw8GLaC3fsemJ8W3hKRgLL0Aw_Wci5DIwkOpZoxB5RzG3YJuA9I_sjLRj6FEtnW9KVGItMTqETQcaehJ1sVKsgTRRjVh155F2bJtCpkyZ_bMDgqUW4V7pT0" />
+    </item>
+  </cookies>
+</error>

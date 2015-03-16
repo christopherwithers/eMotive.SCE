@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ImageResizer.Plugins.DiskCache</id>
+    <version>3.3.3</version>
+    <title>ImageResizer.Plugins.DiskCache</title>
+    <authors>Nathanael Jones,  Imazen</authors>
+    <owners>Nathanael Jones,  Imazen</owners>
+    <licenseUrl>http://imageresizing.net/licenses/trial</licenseUrl>
+    <projectUrl>http://imageresizing.net/</projectUrl>
+    <iconUrl>http://imageresizing.net/images/logos/ImageIconPSD100.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Adds disk caching to the ImageResizer core. Fast, multithreaded, and self-managing. 
+Drastically increases scalability and performance. Writing processed images to disk permits images to be served as static files by IIS, eliminating the typical RAM and CPU overhead assocatied with real-time image processing.
+
+Used by websites hosting hundreds of thousands of images, with hundreds of requests per second.
+
+Docs: http://imageresizing.net/plugins/diskcache
+Support: http://imageresizing.net/support
+
+Requires license, see http://imageresizing.net/plugins
+
+## 30+ plugins available
+
+Search 'ImageResizer' on nuget.org, or visit imageresizing.net to see 40+ plugins, including WPF, WIC, FreeImage, OpenCV, AForge &amp; Ghostscript (PDF) integrations. You'll also find  plugins for disk caching, memory caching, Microsoft SQL blob support, Amazon CloudFront, S3, Azure Blob Storage, MongoDB GridFS, automatic whitespace trimming, automatic white balance, octree 8-bit gif/png quantization and transparency dithering, animated gif resizing, watermark &amp; text overlay support, content aware image resizing / seam carving (based on CAIR), grayscale, sepia, histogram, alpha, contrast, saturation, brightness, hue, Guassian blur, noise removal, and smart sharpen filters, psd editing &amp; rendering, raw (CR2, NEF, DNG, etc.) file exposure, .webp (weppy) support, image batch processing &amp; compression into .zip archives, red eye auto-correction,  face detection, and secure (signed!) remote HTTP image processing. Most datastore plugins support the Virtual Path Provider system, and can be used for non-image files as well.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>ImageResizer DiskCache Imazen Resizer IIS static file caching</tags>
+    <dependencies>
+      <dependency id="ImageResizer" />
+    </dependencies>
+  </metadata>
+</package>

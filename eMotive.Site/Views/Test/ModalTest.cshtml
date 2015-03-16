@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "ModalTest";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ModalTest</h2>
+
+<button onclick="showError('this is a message', 'the Title'); return false;">Do Stuff</button>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            Ajax.DoQuery(routes.URL("FetchAllRoles"), function (data) { alert(data.results); });
+        });
+
+
+    </script>
+}

@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "EditSignup";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Signups", new { area = "Admin" })">Signups</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            Edit Signup
+        </li>
+    </ul>
+}
+<style>
+
+        .datepicker.dropdown-menu button {
+            outline: none;
+            border: 0px;
+        }
+
+        .datepicker.dropdown-menu tbody {
+            height: 180px;
+        }
+
+            .datepicker.dropdown-menu tbody button {
+                padding: 6px;
+            }
+
+
+
+    .timepicker.dropdown-menu {
+        padding: 0 4px;
+    }
+
+        .timepicker.dropdown-menu button {
+            outline: none;
+            border: 0px;
+        }
+
+        .timepicker.dropdown-menu tbody button {
+            padding: 6px;
+        }
+</style>
+
+<div ng-app="signupManagementApp" ng-controller="myApp">
+    <div class="page-header">
+        <h2>Signup {{signup.Id}} Details</h2>
+    </div>
+
+    <div class="row span4 offset1">
+
+        <table class="table table-striped table-bordered table-responsive">
+            <tbody>
+                <tr><th>Academic Year</th><td>{{signup.AcademicYear}}</td></tr>
+                <tr><th>Date</th><td><input type="text" ng-model="signup.Date" class="form-control input-small" bs-datepicker data-autoclose="1" readonly='true' /></td></tr>
+                <tr><th>Close Date</th><td><input type="text" ng-model="signup.CloseDate" class="form-control input-small" bs-datepicker data-autoclose="1" readonly='true' /></td></tr>
+                <tr><th>Closed</th><td><input type="text" ng-model="signup.CloseDate" class="form-control input-small" bs-datepicker data-autoclose="1" readonly='true' /></td></tr>
+                <tr><th>Merge Reserve</th><td><input type="checkbox" ng-model="signup.MergeReserve" /></td></tr>
+                <tr><th>Allow Multiple Signups</th><td><input type="checkbox" ng-model="signup.AllowMultipleSignups" ng-true-value="true" ng-false-value="false" /></td></tr>
+                <tr><th>Description</th><td><input type="text" ng-model="signup.Description" /></td></tr>
+                <tr><th>Group</th>
+                    <td>
+                        <select class="form-control" ng-model="signup.Group.ID" ng-options="group.ID as group.Name for group in groups" style="width: 200px; float: left; margin-right: 10px;" disabled>
+                            <option value="">Select a Group</option>
+                        </select>        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-striped table-bordered table-responsive">
+            <tbody>
+                <tr><th>Description</th><th>Main Places</th><th>Reserve Places</th><th>Interested Places</th><th>Enabled</th><th>Merge Reserve</th><th></th></tr>
+                <tr ng-repeat="slot in signup.Slots">
+                    <td><input type="text" ng-model="slot.Description" /></td>
+                    <td><input type="text" ng-model="slot.PlacesAvailable" /></td>
+                    <td><input type="text" ng-model="slot.ReservePlaces" /></td>
+                    <td><input type="text" ng-model="slot.InterestedPlaces" /></td>
+                    <td><input type="checkbox" ng-model="slot.Enabled" /></td>
+                    <td><input type="checkbox" ng-model="slot.MergeReserve" /></td>
+                    <th>{{slot.UsersSignedUp != null ? 'yes' : 'no'}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="control-group" style="clear:both;">
+        <div class="controls">
+            <button type="submit" class="btn btn-info" ng-click="saveSignup()">Save</button> <a href="@Url.Action("Index")" class="btn">Cancel</a>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+   
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-sanitize.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.0.0-rc.4/angular-strap.js"></script>
+<script src="~/Scripts/angular-strap.tpl.min.js"></script>
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/AngularJs/Services/SignupServices.js"></script>
+    <script src="~/AngularJs/Apps/SignupManagement/SignupManagementApp.js"></script>
+}

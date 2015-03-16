@@ -1,0 +1,32 @@
+﻿@using System
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8" />
+    @{ Html.RenderAction("MetaTags", "Navigation", new { Area = "" }); }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @Styles.Render("~/Content/bootstrap")
+    <script>
+ var siteRoot = "@Url.Content("~")";
+    var rootURL = "@(Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath)";</script>
+
+</head>
+<body>
+    @{Html.RenderAction("Menu", "Navigation", new { area = "Admin" });}
+<div class="container-fluid" style="margin-top: 60px;">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            @RenderSection("Crumbs", false)
+            @RenderBody()
+            @Scripts.Render("~/bundles/bootstrap")
+            <script src="@Url.Action("js", "Application", new { area = "" })?v=0.1"></script>
+            @RenderSection("Scripts", false)
+        </div>
+    </div>
+</div>
+@{ Html.RenderAction("GoogleAnalyticsObject", "Navigation", new { Area = "" }); }
+</body>
+</html>

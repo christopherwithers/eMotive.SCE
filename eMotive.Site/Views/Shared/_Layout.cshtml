@@ -1,0 +1,73 @@
+﻿@using System.Web.Optimization
+@using eMotive.SCE.Common.Helpers
+@{
+    ViewBag.Title = "Home";
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>@ViewBag.Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="Description" content="The University of Birmingham has been challenging and developing great minds for more than a century. Characterised by a tradition of innovation, research at the University has broken new ground, pushed forward the boundaries of knowledge and made an impact on people&#39;s lives." />
+        @{ Html.RenderAction("MetaTags", "Navigation", new { Area = "" }); }
+         @Styles.Render("~/Content/Frameworks")
+        @Styles.Render("~/Content/ContensisCss/Styles")
+        
+        <script> var siteRoot = "@Url.Content("~")";</script>
+        
+    </head>
+<body>
+    
+        <div id="wrapper">
+            <div id="header">
+                <h1 id="logo">
+                    <a href="http://www.birmingham.ac.uk">University of Birmingham</a><span style="display:none">|</span>
+                </h1>
+                <div id="socialMediaLinks">
+                    <ul>
+                        <li><a title="Facebook" href="http://www.facebook.com/unibirmingham"><img alt="Facebook" style="width: 23px; height: 24px;" src="http://www.birmingham.ac.uk/Images/website/icons/socialmedia/facebook-icon.png" /></a></li><li><a title="Twitter" href="http://twitter.com/unibirmingham"><img style="width: 23px; height: 24px;" alt="Twitter" src="http://www.birmingham.ac.uk/Images/website/icons/socialmedia/twitter-icon.png" /></a></li><li><a title="Flickr" href="http://www.flickr.com/unibirmingham"><img style="width: 23px; height: 24px;" alt="Flickr" src="http://www.birmingham.ac.uk/Images/website/icons/socialmedia/flickr-icon.png" /></a></li><li><a title="YouTube" href="http://www.youtube.com/unibirmingham"><img style="width: 23px; height: 24px;" alt="YouTube" src="http://www.birmingham.ac.uk/Images/website/icons/socialmedia/youtube-icon.png" /></a></li>
+                    </ul>
+                </div>
+                    <form method="post" action="http://www.birmingham.ac.uk/search.aspx">
+                          <div id="search">
+                              <div class="sys_textBoxWithRedirect" id="RedirectBox1">
+                                  <label for="searchBox">Search</label>
+                                  <input name="searchBox" class="sys_searchBox" id="searchBox" type="text" value="Search..." />
+                                  <input name="searchButton" class="sys_searchButton" id="searchButton" type="submit" value="Go" />
+                              </div>
+                          </div>
+
+                      </form>
+            </div>
+               
+            <div id="main">
+                <div id="navWrap">
+                    @Html.Partial("_HeaderMenu")
+                </div>
+
+                <div id="content">
+                    <div id="breadcrumbs">
+
+                    </div>
+                    <div id="mainNav">
+                        @{ Html.RenderAction("MainMenu", "Navigation", new { Area = "" }); }
+                    </div>
+                    <div id="wideContent">
+                        @RenderBody()
+                    </div>
+       
+                </div>
+            </div>
+            <div id="footer">
+                @Html.Partial("_Footer")
+            </div>
+        </div>   
+   
+    @Scripts.Render("~/Scripts/Contensis/Core")
+    @Scripts.Render("~/Scripts/Frameworks")
+    <script src="@Url.Action("js","Application", new {area = ""})" type="text/javascript"></script>
+    @RenderSection("footer", false)
+
+    @{ Html.RenderAction("GoogleAnalyticsObject", "Navigation", new {Area = ""}); }
+</body>
+</html>

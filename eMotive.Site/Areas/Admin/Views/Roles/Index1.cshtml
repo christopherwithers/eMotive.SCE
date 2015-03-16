@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>title</h2>
+
+<p>ID: <input data-bind="value: Role.ID" /></p>
+<p>Name: <input data-bind="value: Role.Name" /></p>
+<p>#Roles: <span data-bind="text: Roles().length"></span></p>
+
+<p><button data-bind="click: AddRole, enable: Roles().length < 5" >add new role</button></p>
+
+<br/>
+
+<table data-bind="foreach: Roles">
+    <tr>
+        <td>ID: <input data-bind="value: ID" /></td>o
+        <td>Name: <input data-bind="value: Name" /></td>
+                <td><button data-bind="click: $parent.DeleteRole">delete</button></td> 
+    </tr>
+</table>
+
+
+
+@section Scripts
+{
+    //http://code.google.com/p/colorpickerjs/
+    <script>
+
+        $(function() {
+            Ajax.DoQuery(routes.URL("FetchAllRoles"), function (data) {
+                viewModel = new Roles(data.results);
+                ko.applyBindings(viewModel);
+            });
+        });
+
+        function Role(ID, Name) {
+            var self = this;
+             self.ID = ko.observable(ID);
+             self.Name = ko.observable(Name);
+
+            return self;
+        }
+        
+        function Roles(roles) {
+            var self = this;
+            
+            self.Roles = ko.observableArray(ko.utils.arrayMap(roles, function(role) {
+                return new Role(role.ID, role.Name);
+            }));
+            
+            self.AddRole= function () {
+                self.Roles.push(new Role('0', 'Role'));
+            };
+            
+            self.DeleteRole = function (role) {
+                self.Roles.remove(role);
+            };
+        }
+
+        var viewModel;
+        
+    </script>
+}
+

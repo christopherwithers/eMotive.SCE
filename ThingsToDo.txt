@@ -1,0 +1,6 @@
+Think about email system. Currently hardwiring emails to specific actions using a key. Why not create events, that any number of emails can be assigned to?
+THe events will be static and zero or more emails attached to them.
+
+LUCENE LOCKING ISSUE, SOLUTION IN COMMENTS:
+
+http://www.interworks.com/blogs/banderton/2009/07/09/nhibernatesearch-threading-issues-or-maybe-not

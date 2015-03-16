@@ -1,0 +1,24 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.Menu
+@model  Menu
+
+<ul class="sys_simpleListMenu">
+    <li class="sys_first">
+        <a title="Go to MDS from here" class="sys_0 sys_t170" href="http://www.birmingham.ac.uk/university/colleges/mds/index.aspx">College of Medical and Dental Sciences</a>
+    </li>
+    @if (Model != null && Model.MenuItems.HasContent())
+    {
+        foreach (var item in Model.MenuItems)
+        {
+            if (Request.Url != null && Request.Url.AbsolutePath == item.URL)
+            {
+                <li><div class="sys_selected sys_currentitem"><a title="@item.Title" class="sys_0 sys_t166" href="@item.URL">@item.Name</a></div></li>
+            }
+            else
+            {
+                <li><a title="@item.Title" class="sys_0 sys_t170" href="@item.URL">@item.Name</a></li>
+            }
+            
+        }
+    }
+</ul>

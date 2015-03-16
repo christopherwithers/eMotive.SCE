@@ -1,0 +1,35 @@
+﻿@using eMotive.Models.Objects.Account
+@model Withdraw
+@{
+    ViewBag.Title = "Withdraw";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Withdraw</h2>
+
+@Html.Raw(Server.HtmlDecode(Model.PageText))
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-warning" style="font-size: 130%;">
+        <a class="close" data-dismiss="alert">×</a>
+        @Html.ValidationSummary(false)
+    </div>
+}
+@if (!Model.WithdrawalConfirmation)
+{
+    using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="offset2">
+                <fieldset>
+                    <label>
+                        @Html.CheckBoxFor(n => n.WithdrawalConfirmation) Please click here to confirm your withdrawl request.
+                    </label>
+                    <br />
+                    <input type="submit" value="withdraw" class="btn btn-danger" />
+                </fieldset>
+            </div>
+        </div>
+    }
+}

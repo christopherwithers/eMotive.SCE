@@ -1,0 +1,63 @@
+﻿@using System.Security.Claims
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li class="active">Home
+        </li>
+    </ul>
+}
+
+<div class="page-header">
+    <h2>SCE Admin Home</h2>
+</div>
+<div class="row">
+    <div class="alert alert-block alert-success span12">
+        <h4>Welcome to SCE admin</h4>
+        <p>Here you will find a number of pages allowing you to administer the SCE site. A description of features can be found below.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="alert alert-block alert-info span3">
+        <h4>Users</h4>
+        <p>The user page allows you to create, edit and delete users.</p>
+        <p>All emails recieved by the user can be viewed, and you can view all sessions a user has signed up to.</p>
+        <p>Third party signup is also available.</p>
+    </div>
+
+    <div class="alert alert-block alert-info span3">
+        <h4>Emails</h4>
+        <p>The email page allows you to edit emails.</p>
+    </div>
+
+    <div class="alert alert-block alert-info span3">
+        <h4>Pages</h4>
+        <p>The pages page allows you to edit pages.</p>
+        <p>You can also edit drop down lists.</p>
+    </div>
+
+    <div class="alert alert-block alert-info span3">
+        <h4>Signups</h4>
+        <p>The signup page allows you to edit signups, view the status of signups and edit group information.</p>
+    </div>
+
+    <div class="alert alert-block alert-info span3">
+        <h4>Password</h4>
+        <p>The password page allows you to alter your password.</p>
+    </div>
+
+    <div class="alert alert-block alert-info span3">
+        <h4>Reports</h4>
+        <p>The report page allows you to generate reports on the status of existing signups.</p>
+    </div>
+
+    <div class="alert alert-block alert-info span3">
+        <h4>Settings</h4>
+        <p>The settings page allows you to reindex the search database <b>Only use this feature if you are confident you know what you are doing!</b>.</p>
+        <p>You can also change the contact eamil address and disable all emails from the site.</p>
+    </div>
+</div>

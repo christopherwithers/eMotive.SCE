@@ -1,0 +1,30 @@
+﻿<div class="row">
+    <div class="offset1 span4">
+        <h3>Forms</h3>
+
+        <table class="table table-striped table-bordered table-responsive" ng-show="forms">
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="form in forms">
+                <td>{{form.Name}}</td>
+                <td>
+                    <a href="#/Form/Edit?Id={{form.ID}}&Tab={{tabs.activeTab}}" class="btn btn-primary btn-small">Edit</a>
+                    <a href class="btn btn-danger btn-small">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a href="#/Form/Create?Tab={{tabs.activeTab}}" class="btn btn-primary btn-small">Create</a>
+                </td>
+            </tr>
+        </table>
+        
+        <div ng-hide ="forms">
+            <p>No forms could be found.</p>
+
+            <a href="#/Form/Create?Tab={{tabs.activeTab}}" class="btn btn-primary btn-small">Create a form</a>
+        </div>
+    </div>
+</div>

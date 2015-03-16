@@ -1,0 +1,44 @@
+﻿@using eMotive.Models.Objects.Signups
+@model IEnumerable<Group>
+@{
+    ViewBag.Title = "Groups";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Signups", new { area = "Admin" })">Signups</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            Groups
+        </li>
+    </ul>
+}
+
+<div class="page-header">
+    <h2>Groups</h2>
+</div>
+
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model)
+        {
+            <tr>
+                <td>@group.Name</td>
+                <td>@Html.ActionLink("Edit", "GroupEdit", "Signups", new { id = group.ID }, new { @class = "btn btn-default" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

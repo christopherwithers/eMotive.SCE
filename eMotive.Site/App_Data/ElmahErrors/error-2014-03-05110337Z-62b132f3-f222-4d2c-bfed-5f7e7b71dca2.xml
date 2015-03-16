@@ -1,0 +1,177 @@
+﻿<error errorId="62b132f3-f222-4d2c-bfed-5f7e7b71dca2" application="/LM/W3SVC/32/ROOT" host="COLMDS-5KPW95J" type="System.Web.HttpException" message="The controller for path '/elmah.axd/stylesheet' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/elmah.axd/stylesheet' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="withersc" time="2014-03-05T11:03:37.9113248Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:text/css, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-GB&#xD;&#xA;HTTP_COOKIE:jdash-collapse-DashboardContent=1-1-0; jdash-index-DashboardContent=0%2C1%7C0%2C0%7C1%2C2; ss-pid=DkRLHfa+/V2VHpGpfQOV; glimpsePolicy=On; .ASPXAUTH=C6695364CAEA6C224D5DF3E924D203F6D28555844CC9C06FE1CB86B06340779326A231FFCF8D412972F29DF4BD8EF39C9B25D7A6236ACEDDC069AA5F7B546F58FCB9DB43E1365620372E613AA216B7D39464F80CF432DBDD1578AF8719186936; .ASPXROLES=q_Ut9Xagb1HgJO9B6cYdEGufRGFlyofK_npzWEU60XajHAu4n5kCJxwSDdTJzMYjN3HL6whWGmVhK0Z4ciBXE9ZVzzZeGKtQpYMYrNmgmUhlhwsxwkQLnqtwAZ3kfR65M0v9U7WYqDObuK0IGNi2lmbAsyeqPZTL11IzHKtcckwwFplMB_tzAsOF14wkHKSV001-ruSYpFCaiR2xR9J592bzqjUem99BgjYSuRpEgcFR92YFq37Ydp4noWvIwLZYWxfBBDetHhmqQGAg6zIkBTBTUQXMl_KVm0ld_7r3eseVBY2N0axvofcvRK0rED1YLsOw5n7QCxqgOuO4WZ5fpUsEXWcFLH5xgaOfdNhTgXFK6KMGFrChFthacDMrJieP3tn6NDiDMnijMD-jWZS-2ixWIEs7a0AhmIxgqMXKeGI0ahScDIK08p0zHtK2tYl59ok7gE_-H6h50IVW6SZ8ltmxYwjYhYaZCbjnm6fs-CziVKRO-0bWMeLO7QGc32fY0&#xD;&#xA;HTTP_HOST:localhost:58914&#xD;&#xA;HTTP_REFERER:http://localhost:58914/elmah.axd&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: text/css, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-GB&#xD;&#xA;Cookie: jdash-collapse-DashboardContent=1-1-0; jdash-index-DashboardContent=0%2C1%7C0%2C0%7C1%2C2; ss-pid=DkRLHfa+/V2VHpGpfQOV; glimpsePolicy=On; .ASPXAUTH=C6695364CAEA6C224D5DF3E924D203F6D28555844CC9C06FE1CB86B06340779326A231FFCF8D412972F29DF4BD8EF39C9B25D7A6236ACEDDC069AA5F7B546F58FCB9DB43E1365620372E613AA216B7D39464F80CF432DBDD1578AF8719186936; .ASPXROLES=q_Ut9Xagb1HgJO9B6cYdEGufRGFlyofK_npzWEU60XajHAu4n5kCJxwSDdTJzMYjN3HL6whWGmVhK0Z4ciBXE9ZVzzZeGKtQpYMYrNmgmUhlhwsxwkQLnqtwAZ3kfR65M0v9U7WYqDObuK0IGNi2lmbAsyeqPZTL11IzHKtcckwwFplMB_tzAsOF14wkHKSV001-ruSYpFCaiR2xR9J592bzqjUem99BgjYSuRpEgcFR92YFq37Ydp4noWvIwLZYWxfBBDetHhmqQGAg6zIkBTBTUQXMl_KVm0ld_7r3eseVBY2N0axvofcvRK0rED1YLsOw5n7QCxqgOuO4WZ5fpUsEXWcFLH5xgaOfdNhTgXFK6KMGFrChFthacDMrJieP3tn6NDiDMnijMD-jWZS-2ixWIEs7a0AhmIxgqMXKeGI0ahScDIK08p0zHtK2tYl59ok7gE_-H6h50IVW6SZ8ltmxYwjYhYaZCbjnm6fs-CziVKRO-0bWMeLO7QGc32fY0&#xD;&#xA;Host: localhost:58914&#xD;&#xA;Referer: http://localhost:58914/elmah.axd&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/32/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\withersc\Dropbox\eMotive.SCE\eMotive.Site\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="withersc" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="withersc" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="withersc" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="32" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/32" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/elmah.axd/stylesheet" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\withersc\Dropbox\eMotive.SCE\eMotive.Site\elmah.axd" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="50078" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/elmah.axd" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="58914" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/elmah.axd" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/css, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-GB" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="jdash-collapse-DashboardContent=1-1-0; jdash-index-DashboardContent=0%2C1%7C0%2C0%7C1%2C2; ss-pid=DkRLHfa+/V2VHpGpfQOV; glimpsePolicy=On; .ASPXAUTH=C6695364CAEA6C224D5DF3E924D203F6D28555844CC9C06FE1CB86B06340779326A231FFCF8D412972F29DF4BD8EF39C9B25D7A6236ACEDDC069AA5F7B546F58FCB9DB43E1365620372E613AA216B7D39464F80CF432DBDD1578AF8719186936; .ASPXROLES=q_Ut9Xagb1HgJO9B6cYdEGufRGFlyofK_npzWEU60XajHAu4n5kCJxwSDdTJzMYjN3HL6whWGmVhK0Z4ciBXE9ZVzzZeGKtQpYMYrNmgmUhlhwsxwkQLnqtwAZ3kfR65M0v9U7WYqDObuK0IGNi2lmbAsyeqPZTL11IzHKtcckwwFplMB_tzAsOF14wkHKSV001-ruSYpFCaiR2xR9J592bzqjUem99BgjYSuRpEgcFR92YFq37Ydp4noWvIwLZYWxfBBDetHhmqQGAg6zIkBTBTUQXMl_KVm0ld_7r3eseVBY2N0axvofcvRK0rED1YLsOw5n7QCxqgOuO4WZ5fpUsEXWcFLH5xgaOfdNhTgXFK6KMGFrChFthacDMrJieP3tn6NDiDMnijMD-jWZS-2ixWIEs7a0AhmIxgqMXKeGI0ahScDIK08p0zHtK2tYl59ok7gE_-H6h50IVW6SZ8ltmxYwjYhYaZCbjnm6fs-CziVKRO-0bWMeLO7QGc32fY0" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:58914" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:58914/elmah.axd" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="jdash-collapse-DashboardContent">
+      <value string="1-1-0" />
+    </item>
+    <item name="jdash-index-DashboardContent">
+      <value string="0%2C1%7C0%2C0%7C1%2C2" />
+    </item>
+    <item name="ss-pid">
+      <value string="DkRLHfa+/V2VHpGpfQOV" />
+    </item>
+    <item name="glimpsePolicy">
+      <value string="On" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="C6695364CAEA6C224D5DF3E924D203F6D28555844CC9C06FE1CB86B06340779326A231FFCF8D412972F29DF4BD8EF39C9B25D7A6236ACEDDC069AA5F7B546F58FCB9DB43E1365620372E613AA216B7D39464F80CF432DBDD1578AF8719186936" />
+    </item>
+    <item name=".ASPXROLES">
+      <value string="q_Ut9Xagb1HgJO9B6cYdEGufRGFlyofK_npzWEU60XajHAu4n5kCJxwSDdTJzMYjN3HL6whWGmVhK0Z4ciBXE9ZVzzZeGKtQpYMYrNmgmUhlhwsxwkQLnqtwAZ3kfR65M0v9U7WYqDObuK0IGNi2lmbAsyeqPZTL11IzHKtcckwwFplMB_tzAsOF14wkHKSV001-ruSYpFCaiR2xR9J592bzqjUem99BgjYSuRpEgcFR92YFq37Ydp4noWvIwLZYWxfBBDetHhmqQGAg6zIkBTBTUQXMl_KVm0ld_7r3eseVBY2N0axvofcvRK0rED1YLsOw5n7QCxqgOuO4WZ5fpUsEXWcFLH5xgaOfdNhTgXFK6KMGFrChFthacDMrJieP3tn6NDiDMnijMD-jWZS-2ixWIEs7a0AhmIxgqMXKeGI0ahScDIK08p0zHtK2tYl59ok7gE_-H6h50IVW6SZ8ltmxYwjYhYaZCbjnm6fs-CziVKRO-0bWMeLO7QGc32fY0" />
+    </item>
+  </cookies>
+</error>

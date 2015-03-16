@@ -1,0 +1,23 @@
+﻿@using eMotive.Models.Objects.Pages
+@model PartialPage   
+@Html.HiddenFor(m => m.ID)
+            <div class="control-group">
+                <label class="control-label" for="Text">Text</label>
+                <div class="controls">
+                    <textarea class="tinymce" cols="20" data-val="true" id="Text" name="Text" rows="2" style="width: 100%; height: 30em;">
+                        @Server.HtmlDecode(Model.Text)      
+                    </textarea>
+                </div>
+            </div>
+ <div class="control-group">
+        <label class="control-label" for="Description">Description</label>
+        <div class="controls">
+            @Html.TextBoxFor(n => n.Description, new {style = "width: 100%;"})
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-info">Save</button>
+            <a href="@Url.Action("Index")" class="btn">Cancel</a>
+        </div>
+    </div>

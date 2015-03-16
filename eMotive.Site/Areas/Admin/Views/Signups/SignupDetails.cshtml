@@ -1,0 +1,119 @@
+﻿@using Extensions
+@using eMotive.Models.Objects.SignupsMod
+@model Signup
+@{
+    ViewBag.Title = "SignupDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Crumbs
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Signups", new { area = "Admin" })">Signups</a> <span class="divider">/</span>
+        </li>
+        <li class="active">Signup Details
+        </li>
+    </ul>
+}
+<div class="page-header">
+    <h2>Signup Details</h2>
+</div>
+
+@if (Model == null)
+{
+    <div class="alert alert-danger">Error. The information for the signup could not be found.</div>
+}
+else
+{
+    <div class="row">
+        <div class="offset2 span6">
+            <h4>Details</h4>
+            <table class="table table-bordered table-striped table-hover">
+                <tbody>
+                    <tr>
+                        <td><strong>Date</strong></td>
+                        <td>@Model.Date.ToString("dddd d MMMM yyyy")</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Close Date</strong></td>
+                        <td>@Model.CloseDate.ToString("dddd d MMMM yyyy")</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Group</strong></td>
+                        <td>@Model.Group.Name</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Academic Year</strong></td>
+                        <td>@Model.AcademicYear</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @if (!Model.Slots.HasContent())
+            {
+                <div class="alert alert-warning">No sessions were found for this interview date.</div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="offset1">
+                        @foreach (var slot in Model.Slots)
+                        {
+                            <h4>@slot.Description</h4>
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Description</strong></td>
+                                        <td>@slot.Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Places Available</strong></td>
+                                        <td>@slot.PlacesAvailable</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Remaining Places</strong></td>
+                                        <td>@(slot.PlacesAvailable - slot.NumberSignedUp())</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Applicants Signedup</strong></td>
+                                        <td>
+                                            @if (!slot.UsersSignedUp.HasContent())
+                                            {
+                                                <text>No applicants have signed up to this session.</text>
+                                            }
+                                            else
+                                            {
+                                                <table class="table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Date Signedup</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var applicant in slot.UsersSignedUp)
+                                                        {
+                                                            <tr>
+                                                                <td>@applicant.User.Forename @applicant.User.Surname</td>
+                                                                <td>@applicant.SignUpDate.ToString("dddd d MMMM yyyy hh:mm:ss")</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            }
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            }
+            @Html.ActionLink("Back To Signup Home", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    </div>
+}
